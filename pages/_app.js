@@ -1,7 +1,23 @@
 import '../styles/globals.css'
+import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import { GlobalStyle } from '../src/theme/GlobalStyle';
+import { theme } from '../src/theme/theme';
+import store from '../store';
+import Layout from '../components/Layout';
+
+function LizenaApp({ Component, pageProps }) {
+  return <>
+  <Provider store={store}>
+    <GlobalStyle />
+    <ThemeProvider theme={theme}>
+        <Layout>
+        <Component {...pageProps} />
+        </Layout>
+    </ThemeProvider>
+    </Provider>
+  </>
 }
 
-export default MyApp
+export default LizenaApp;
