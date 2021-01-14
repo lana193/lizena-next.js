@@ -5,7 +5,6 @@ import AdminLogIn from '../components/adminLogIn';
 
 const Admin = () => {
     const [currentUserToken, setCurrentUserToken] = useState(null);
-    console.log('888token', currentUserToken);
 
     return (currentUserToken ?
         <AdminLogOut setCurrentUserToken={setCurrentUserToken} />

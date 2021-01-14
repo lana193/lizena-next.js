@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import Head from 'next/head';
 import Link from 'next/link';
+import styled from 'styled-components';
 
 const ObjectWrapper = styled.div`
     margin: 15px;

@@ -1,6 +1,4 @@
 import Head from 'next/head'
-// import styles from '../styles/Home.module.css'
-import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -98,16 +96,15 @@ const H1 = styled.h1`
 `;
 
 const Home = (props) => {
-  console.log(234, props)
   const { handleSendMessage } = props;
   return (
     <div
     // className={styles.container}
-    >
+    > 
       <Head>
-        <title>Create Next App</title>
+        <title>Лізена | Будівельно-ремонтна компанія</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="Lizena" />
+        <meta name="description" content="Будівництво та продаж нерухомості у Львові, +38 (067) 90 44 630, +38 (097) 66 08 663; м. Львів, вул. Богданівська, 11а" />
       </Head>
 
       <HomePageWrapper>

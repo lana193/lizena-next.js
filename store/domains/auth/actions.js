@@ -29,37 +29,24 @@ export const handleLogOutUser = (callback=f=>f) => {
   }
 }
 
-export const logInAsAdmin = (userData) => dispatch => {
-  console.log(555555, userData);
-  postService('lizena/auth/admin', userData)
-    .then(res => {
-      // Set token to localStorage
-      const { token, success, role } = res.data;
-      console.log(8888, role)
-      if (success === true && role === 'Admin') {
-        localStorage.setItem('jwtToken', token);
-        // Set token to Auth header
-        setAuthToken(`Bearer ${token}`);
-        // Decode token to get user data
-        const decoded = jwt_decode(token);
-        console.log('decoded', decoded);
-        dispatch(setCurrentUser(decoded));
-      }
-      else {
-        console.log('У вас немає доступу для роботи в режимі адміністратора!')
-      }
-    })
-};
-
-// const sendMessage = (messageDetails) => ({
-//   type: actionTypes.SEND_MESSAGE_FROM_USER,
-//   payload: postService('lizena/contacts/send', messageDetails)
-// })
-
-// export const handleSendMessage = (messageDetails) => {
-//   return async(dispatch) => {
-//       await dispatch(sendMessage(messageDetails));
-//   }
+// export const logInAsAdmin = (userData) => dispatch => {
+//   postService('lizena/auth/admin', userData)
+//     .then(res => {
+//       // Set token to localStorage
+//       const { token, success, role } = res.data;
+//       if (success === true && role === 'Admin') {
+//         localStorage.setItem('jwtToken', token);
+//         // Set token to Auth header
+//         setAuthToken(`Bearer ${token}`);
+//         // Decode token to get user data
+//         const decoded = jwt_decode(token);
+//         console.log('decoded', decoded);
+//         dispatch(setCurrentUser(decoded));
+//       }
+//       else {
+//         console.log('У вас немає доступу для роботи в режимі адміністратора!')
+//       }
+//     })
 // };
 
 // Set logged in user

@@ -14,6 +14,10 @@ const ServicesWrapper = styled.div`
     text-align: center;
     margin: 0;
 
+    @media only screen and (max-width: 767.98px) {
+        padding: 10% 0 5% 0;
+    }
+
     .service-info {
         padding: 0 6em;
         text-align: left;

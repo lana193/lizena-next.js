@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import styled from 'styled-components';
+
 import ProjectGallery from '../project/ProjectGallery';
 import DeleteObjectModal from './DeleteObjectModal';
 import UpdateObjectModal from './UpdateObjectModal';
@@ -126,6 +128,9 @@ const ObjectForSale = (props) => {
 
     return (
         <ObjectWrapper background={selectedObject && selectedObject.main_image}>
+            <Head>
+                <title>{`Купити котедж - ${selectedObject.object_name}`}</title>
+            </Head>
             {selectedObject &&
                 <>
                     <div className='object-main-info'>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 
@@ -33,7 +33,6 @@ const MessageSendedModal = (props) => {
     }
     
     const closeModal = () => {
-        console.log(555, closeContactModal )
         if(closeContactModal)
         {closeContactModal()};
         setIsOpen(false);
@@ -42,7 +41,6 @@ const MessageSendedModal = (props) => {
     return (
         <div>
           <Modal
-            // appElement={document.getElementById('app')}
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}

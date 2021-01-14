@@ -9,6 +9,7 @@ import useCurrentUserToken from '../../src/utils/useCurrentUserToken';
 const ObjectsContainer = styled.div`
     padding: 70px 0 150px 0;
     width: 100%;
+    min-height: 80vh;
 
     @media only screen and (max-width: 767.98px) {
         padding: 60px 0 50px 0;

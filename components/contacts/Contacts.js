@@ -111,7 +111,6 @@ const Contacts = (props) => {
     const { handleSendMessage } = props;
 
     const handleSubmit = (values) => {
-        console.log(2323, values);
         handleSendMessage(values);
     }
     return (

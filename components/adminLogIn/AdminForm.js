@@ -23,7 +23,6 @@ const AdminContainer = styled.div`
 
 const AdminForm = (props) => {
     const { handleSubmit, selectedUser } = props;
-    console.log(4444, selectedUser.isAuthenticated);
 
     return (
         <AdminContainer>

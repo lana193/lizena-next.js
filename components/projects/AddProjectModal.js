@@ -48,7 +48,6 @@ const AddProjectModal = (props) => {
 
   const handleSubmit = (values) => {
     const fd = new FormData();
-    console.log(1010, values);
     fd.append('project_name', values.project_name);
     fd.append('description', values.description);
     

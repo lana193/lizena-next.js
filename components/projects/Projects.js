@@ -9,6 +9,7 @@ import useCurrentUserToken from '../../src/utils/useCurrentUserToken';
 const ProjectsContainer = styled.div`
     padding-top: 60px;
     width: 100%;
+    min-height: 80vh;
     @media only screen and (max-width: 767.98px) {
         padding-top: 60px;
     }

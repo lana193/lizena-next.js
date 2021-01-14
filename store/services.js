@@ -21,7 +21,6 @@ export const getByIdService = (url) => {
 }
 
 export const postService = (url, data, options = {}) => {
-    console.log(7878, data);
     try {
         return axios.post(`${baseUrl}${url}`, data, options);
     } catch(error) {
@@ -32,7 +31,6 @@ export const postService = (url, data, options = {}) => {
 
 export const updateService = (url, data, options = {}) => {
     try {
-        console.log(4444, data);
         return axios.put(`${baseUrl}${url}`, data, options);
     } catch(error) {
         console.log(error);

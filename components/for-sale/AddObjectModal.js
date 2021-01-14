@@ -49,7 +49,6 @@ const AddObjectModal = (props) => {
 
   const handleSubmit = (values) => {
     const fd = new FormData();
-    console.log(1010, values);
     fd.append('object_name', values.object_name);
     fd.append('description', values.description);
     fd.append('subtitle', values.subtitle);
