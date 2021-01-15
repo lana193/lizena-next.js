@@ -44,7 +44,7 @@ const ContactModal = (props) => {
 
   return (
     <div>
-      <BigButton name='Замовити безкоштовну консультацію' onClick={openModal} />
+      <BigButton name='Замовити безкоштовну консультацію' onClick={openModal}/>
       <Modal
         // appElement={document.getElementById('app')}
         isOpen={modalIsOpen}

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const ButtonContainer = styled.button`
@@ -13,7 +12,8 @@ const ButtonContainer = styled.button`
     line-height: 17px;
     text-transform: uppercase;
     cursor: pointer;
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Open Sans', san-serif;
+    font-weight: 400;
     :hover {
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
