@@ -104,7 +104,7 @@ const Home = (props) => {
       <Head>
         <title>Лізена | Будівельно-ремонтна компанія</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="Будівництво та продаж нерухомості у Львові, +38 (067) 90 44 630, +38 (097) 66 08 663; м. Львів, вул. Богданівська, 11а" />
+        <meta property="og:description" content="Будівництво та продаж нерухомості у Львові, +38 (067) 90 44 630, +38 (097) 66 08 663; м. Львів, вул. Богданівська, 11а" />
       </Head>
 
       <HomePageWrapper>

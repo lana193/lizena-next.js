@@ -10,7 +10,7 @@ import {
  import Projects from '../components/projects/Projects';
 
  const mapStateToProps = state => ({
-     selectedProjects: selectProjects(state)
+    selectedProjects: selectProjects(state)
  });
 
  const mapDispatchToProps = dispatch => bindActionCreators({

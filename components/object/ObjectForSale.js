@@ -116,10 +116,10 @@ const ObjectWrapper = styled.div`
 
 const ObjectForSale = (props) => {
     const { handleGetObject, selectedObject, handleDeleteObject, handleUpdateObject } = props;
-    
+
     const router = useRouter();
     const objectId = router.query.object_id;
-    
+
     const currentUserToken = useCurrentUserToken();
 
     useEffect(() => {
@@ -130,6 +130,10 @@ const ObjectForSale = (props) => {
         <ObjectWrapper background={selectedObject && selectedObject.main_image}>
             <Head>
                 <title>{`Купити котедж - ${selectedObject.object_name}`}</title>
+                <meta name="description" content={`Придбати ${selectedObject.subtitle}, площа ${selectedObject.metres} м.кв, ${props.rooms > 4 ? 'Кімнат' : 'Кімнати'}>`}></meta>
+                <meta property="og:title" content={`Купити котедж - ${selectedObject.object_name}`} />
+                <meta property="og:description" content={`Придбати ${selectedObject.subtitle}, площа ${selectedObject.metres} м.кв, ${props.rooms > 4 ? 'Кімнат' : 'Кімнати'}>`} />
+                <meta property="og:image" content={selectedObject.main_image} />
             </Head>
             {selectedObject &&
                 <>
@@ -161,9 +165,9 @@ const ObjectForSale = (props) => {
                                 handleGetObject={handleGetObject}
                                 currentUserToken={currentUserToken}
                             />
-                            <DeleteObjectModal 
-                                handleDeleteObject={handleDeleteObject} 
-                                objectId={objectId} 
+                            <DeleteObjectModal
+                                handleDeleteObject={handleDeleteObject}
+                                objectId={objectId}
                                 currentUserToken={currentUserToken}
                             />
                         </div>

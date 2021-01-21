@@ -144,7 +144,8 @@ const ObjectCard = (props) => {
                 </div>
                 <div className='footer'>
                     <div className='title'>
-                        <Link href={`/object/${props._id}`}>Дізнатися більше</Link>
+                        <Link href={`/object/[object_id]`} as={`/object/${props._id}`}>Дізнатися більше</Link>
+                        {/* <Link href={`/user?id={id}`} as={`/user/${id}`} */}
                     </div>
                 </div>
             </div>
