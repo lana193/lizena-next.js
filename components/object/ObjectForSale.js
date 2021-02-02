@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
-// import Head from 'next/head';
 import styled from 'styled-components';
 
 import ProjectGallery from '../project/ProjectGallery';
@@ -116,7 +115,7 @@ const ObjectWrapper = styled.div`
 `;
 
 const ObjectForSale = (props) => {
-    const { handleGetObject, selectedObject, handleDeleteObject, handleUpdateObject } = props;
+    const { handleGetObject, selectedObject, handleDeleteObject, handleUpdateObject, metaData } = props;
     const { main_image, object_name, subtitle, metres, rooms, price, description, photos } = selectedObject;
     const router = useRouter();
     const objectId = router.query.object_id;
@@ -130,12 +129,13 @@ const ObjectForSale = (props) => {
     return (
         <ObjectWrapper background={ main_image && main_image}>
             <NextSeo
-                title = {`Купити котедж - ${object_name && object_name}`}
-                description="description" content={`Придбати ${subtitle && subtitle}, площа ${metres && metres} м.кв, ${rooms && rooms > 4 ? 'Кімнат' : 'Кімнати'}>`}
+                title = {`Купити котедж - ${metaData.object_name && metaData.object_name}`}
+                description="description" content={`Придбати ${metaData.subtitle && metaData.subtitle}, площа ${metaData.metres && metaData.metres} м.кв, ${metaData.rooms && metaData.rooms > 4 ? 'Кімнат' : 'Кімнати'}`}
             />
             {selectedObject &&
                 <>
                     <div className='object-main-info'>
+                        <h1>{props.message && props.message}</h1>
                         <div className='object-title'>
                             <p className='p-title'>{object_name} • {metres} м<sup>2</sup></p>
                         </div>

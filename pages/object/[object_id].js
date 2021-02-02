@@ -25,3 +25,22 @@ import {
  }, dispatch);
 
  export default connect(mapStateToProps, mapDispatchToProps)(ObjectForSale);
+
+//  export function getServerSideProps() {
+//     return {
+//         props: {
+//             message: 'SSR data'
+//         }
+//     }
+// }
+
+export async function getServerSideProps(cxt) {
+    const res = await fetch(`http://185-229-224-187.cloud-xip.io/lizena/object/${cxt.query.object_id}`);
+    const data = await res.json();
+
+    return {
+        props: {
+            metaData: data
+        }
+    };
+}
