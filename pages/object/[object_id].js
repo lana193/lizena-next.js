@@ -40,7 +40,7 @@ export async function getServerSideProps(cxt) {
 
     return {
         props: {
-            metaData: data
+            objectData: data
         }
     };
 }

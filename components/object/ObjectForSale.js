@@ -115,8 +115,8 @@ const ObjectWrapper = styled.div`
 `;
 
 const ObjectForSale = (props) => {
-    const { handleGetObject, selectedObject, handleDeleteObject, handleUpdateObject, metaData } = props;
-    const { main_image, object_name, subtitle, metres, rooms, price, description, photos } = selectedObject;
+    const { handleGetObject, selectedObject, handleDeleteObject, handleUpdateObject, objectData } = props;
+    const { main_image, object_name, subtitle, metres, rooms, price, description, photos, _id } = objectData;
     const router = useRouter();
     const objectId = router.query.object_id;
 
@@ -129,13 +129,29 @@ const ObjectForSale = (props) => {
     return (
         <ObjectWrapper background={ main_image && main_image}>
             <NextSeo
-                title = {`Купити котедж - ${metaData.object_name && metaData.object_name}`}
-                description="description" content={`Придбати ${metaData.subtitle && metaData.subtitle}, площа ${metaData.metres && metaData.metres} м.кв, ${metaData.rooms && metaData.rooms > 4 ? 'Кімнат' : 'Кімнати'}`}
+                title = {`Купити котедж - ${object_name && object_name}`}
+                description={`Придбати ${subtitle && subtitle}, площа ${metres && metres} м.кв, ${rooms && rooms > 4 ? 'Кімнат' : 'Кімнати'}`}
+                canonical={`http://www.lizena.com.ua/object/${_id}`}
+                openGraph={{
+                    type: 'website',
+                    url: `http://www.lizena.com.ua/object/${_id}`,
+                    title: `Купити котедж - ${object_name && object_name}`,
+                    description: `Придбати ${subtitle && subtitle}, площа ${metres && metres} м.кв, ${rooms && rooms > 4 ? 'Кімнат' : 'Кімнати'}`,
+                    images: [
+                        {
+                            url: `${main_image}`,
+                            width: 800,
+                            height: 600,
+                            alt: `${subtitle && subtitle} - ${object_name && object_name}`,
+                        },
+                    ],
+                    site_name: 'Lizena',
+                    tags: ['купити', 'котедж', 'львів'],
+                }}
             />
-            {selectedObject &&
+            {objectData &&
                 <>
                     <div className='object-main-info'>
-                        <h1>{props.message && props.message}</h1>
                         <div className='object-title'>
                             <p className='p-title'>{object_name} • {metres} м<sup>2</sup></p>
                         </div>
