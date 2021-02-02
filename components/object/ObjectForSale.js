@@ -117,7 +117,7 @@ const ObjectWrapper = styled.div`
 
 const ObjectForSale = (props) => {
     const { handleGetObject, selectedObject, handleDeleteObject, handleUpdateObject } = props;
-
+    const { main_image, object_name, subtitle, metres, rooms, price, description, photos } = selectedObject;
     const router = useRouter();
     const objectId = router.query.object_id;
 
@@ -128,29 +128,29 @@ const ObjectForSale = (props) => {
     }, [handleGetObject, objectId])
 
     return (
-        <ObjectWrapper background={selectedObject && selectedObject.main_image}>
+        <ObjectWrapper background={ main_image && main_image}>
             <NextSeo
-                title = {`Купити котедж - ${selectedObject.object_name}`}
-                description="description" content={`Придбати ${selectedObject.subtitle}, площа ${selectedObject.metres} м.кв, ${props.rooms > 4 ? 'Кімнат' : 'Кімнати'}>`}
+                title = {`Купити котедж - ${object_name && object_name}`}
+                description="description" content={`Придбати ${subtitle && subtitle}, площа ${metres && metres} м.кв, ${rooms && rooms > 4 ? 'Кімнат' : 'Кімнати'}>`}
             />
             {selectedObject &&
                 <>
                     <div className='object-main-info'>
                         <div className='object-title'>
-                            <p className='p-title'>{selectedObject.object_name} • {selectedObject.metres} м<sup>2</sup></p>
+                            <p className='p-title'>{object_name} • {metres} м<sup>2</sup></p>
                         </div>
                         <div className='object-price'>
-                            <p className='p-price'> {selectedObject.price} $</p>
+                            <p className='p-price'> {price} $</p>
                         </div>
                     </div>
                     <div className='object-desc'>
                         <H3>Опис котеджу</H3>
-                        <P2>{selectedObject.description}</P2>
+                        <P2>{description}</P2>
                     </div>
                     <div className='gallery-wrapper'>
                         <H3>Галерея</H3>
                         <div className='gallery'>
-                            <ProjectGallery photos={selectedObject.photos} />
+                            <ProjectGallery photos={photos} />
                         </div>
                     </div>
 
