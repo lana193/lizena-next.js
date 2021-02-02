@@ -19,7 +19,6 @@ export const handleUploadedImg = async(files) => {
     const compressedFiles = [];
     for (const file of files) {
         const compressedFile = await imageCompression(file, options);
-        console.log(3333, compressedFile);
         compressedFiles.push(compressedFile);
       }
 

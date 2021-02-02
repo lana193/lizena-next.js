@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
+// import Head from 'next/head';
 import styled from 'styled-components';
 
 import ProjectGallery from '../project/ProjectGallery';
@@ -128,13 +129,10 @@ const ObjectForSale = (props) => {
 
     return (
         <ObjectWrapper background={selectedObject && selectedObject.main_image}>
-            <Head>
-                <title>{`Купити котедж - ${selectedObject.object_name}`}</title>
-                <meta name="description" content={`Придбати ${selectedObject.subtitle}, площа ${selectedObject.metres} м.кв, ${props.rooms > 4 ? 'Кімнат' : 'Кімнати'}>`}></meta>
-                <meta property="og:title" content={`Купити котедж - ${selectedObject.object_name}`} />
-                <meta property="og:description" content={`Придбати ${selectedObject.subtitle}, площа ${selectedObject.metres} м.кв, ${props.rooms > 4 ? 'Кімнат' : 'Кімнати'}>`} />
-                <meta property="og:image" content={selectedObject.main_image} />
-            </Head>
+            <NextSeo
+                title = {`Купити котедж - ${selectedObject.object_name}`}
+                description="description" content={`Придбати ${selectedObject.subtitle}, площа ${selectedObject.metres} м.кв, ${props.rooms > 4 ? 'Кімнат' : 'Кімнати'}>`}
+            />
             {selectedObject &&
                 <>
                     <div className='object-main-info'>
