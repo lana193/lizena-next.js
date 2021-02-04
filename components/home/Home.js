@@ -97,14 +97,21 @@ const H1 = styled.h1`
 
 const Home = (props) => {
   const { handleSendMessage } = props;
+  const homeDesc = 'Будівництво та продаж нерухомості у Львові, +38 (067) 90 44 630, +38 (097) 66 08 663; м. Львів, вул. Богданівська, 11а';
   return (
     <div
     // className={styles.container}
     > 
       <Head>
         <title>Лізена | Будівельно-ремонтна компанія</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta property="og:description" content="Будівництво та продаж нерухомості у Львові, +38 (067) 90 44 630, +38 (097) 66 08 663; м. Львів, вул. Богданівська, 11а" />
+        <meta name="title" content='Лізена | Будівельно-ремонтна компанія'/>
+        <meta name="description" content={homeDesc}/>
+
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="http://lizena.com.ua/"/>
+        <meta property="og:title" content="Лізена | Будівельно-ремонтна компанія"/>
+        <meta property="og:description" content={homeDesc}/>
+        <meta property="og:image" content="/logo.jpg"/>
       </Head>
 
       <HomePageWrapper>

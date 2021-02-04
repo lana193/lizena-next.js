@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
+// import { NextSeo } from 'next-seo';
+import Haed from 'next/head';
 import styled from 'styled-components';
 
 import ProjectGallery from '../project/ProjectGallery';
@@ -126,9 +127,24 @@ const ObjectForSale = (props) => {
         objectId && handleGetObject(objectId);
     }, [handleGetObject, objectId])
 
+    const shortDesc = `Придбати ${subtitle}, площа ${metres} м.кв, ${rooms && rooms > 4 ? 'Кімнат' : 'Кімнати'}`;
+
     return (
         <ObjectWrapper background={ main_image && main_image}>
-            <NextSeo
+            <Head>
+                {/* Primary */}
+                <title>{`Купити котедж | ${object_name}`}</title>
+                <meta name="title" content={`Купити котедж | ${object_name}`}/>
+                <meta name="description" content={shortDesc}/>
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website"/>
+                <meta property="og:url" content={`http://lizena.com.ua/object/${_id}`}/>
+                <meta property="og:title" content={`Купити котедж | ${object_name}`}/>
+                <meta property="og:description" content={shortDesc}/>
+                <meta property="og:image" content={main_image}/>
+            </Head>
+            {/* <NextSeo
                 title = {`Купити котедж - ${object_name && object_name}`}
                 description={`Придбати ${subtitle && subtitle}, площа ${metres && metres} м.кв, ${rooms && rooms > 4 ? 'Кімнат' : 'Кімнати'}`}
                 canonical={`http://www.lizena.com.ua/object/${_id}`}
@@ -148,7 +164,7 @@ const ObjectForSale = (props) => {
                     site_name: 'Lizena',
                     tags: ['купити', 'котедж', 'львів'],
                 }}
-            />
+            /> */}
             {objectData &&
                 <>
                     <div className='object-main-info'>

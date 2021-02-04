@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="theme-color" content="#000000" />
                 <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
             <NavBar />
             {children}
