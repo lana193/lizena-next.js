@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import styled from 'styled-components';
 
 import ProjectGallery from './ProjectGallery';
@@ -21,7 +22,8 @@ const ProjectWrapper = styled.div`
 `;
 
 const Project = (props) => {
-    const { handleGetProject, selectedProject, handleDeleteProject, handleUpdateProject } = props;
+    const { handleGetProject, selectedProject, handleDeleteProject, handleUpdateProject, projectData } = props;
+    const { project_name, description, main_image, _id } = projectData;
     
     const router = useRouter();
     const projectId = router.query.project_id;
@@ -31,9 +33,24 @@ const Project = (props) => {
     useEffect(() => {
         projectId && handleGetProject(projectId);
     }, [handleGetProject, projectId])
+    
+    const shortDesc = description ? description.substr(0, 160) : "Проєкт будвельно-ремонтної компанії Лізена";
 
     return (
         <ProjectWrapper>
+            <Head>
+                {/* Primary */}
+                <title>{`Лізена проєкти | ${project_name}`}</title>
+                <meta name="title" content={`Лізена проєкти | ${project_name}`}/>
+                <meta name="description" content={shortDesc}/>
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website"/>
+                <meta property="og:url" content={`http://lizena.com.ua/project/${_id}`}/>
+                <meta property="og:title" content={`Лізена проєкти | ${project_name}`}/>
+                <meta property="og:description" content={shortDesc}/>
+                <meta property="og:image" content={main_image}/>
+            </Head>
             {selectedProject &&
                 <>
                     <div className='project-desc'>

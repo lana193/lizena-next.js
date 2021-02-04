@@ -25,3 +25,14 @@ import {
  }, dispatch);
 
  export default connect(mapStateToProps, mapDispatchToProps)(Project);
+
+ export async function getServerSideProps(cxt) {
+    const res = await fetch(`http://185-229-224-187.cloud-xip.io/lizena/project/${cxt.query.project_id}`);
+    const data = await res.json();
+
+    return {
+        props: {
+            projectData: data
+        }
+    };
+}
