@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 // import { NextSeo } from 'next-seo';
-import Haed from 'next/head';
+import Head from 'next/head';
 import styled from 'styled-components';
 
 import ProjectGallery from '../project/ProjectGallery';
@@ -127,7 +127,7 @@ const ObjectForSale = (props) => {
         objectId && handleGetObject(objectId);
     }, [handleGetObject, objectId])
 
-    const shortDesc = `Придбати ${subtitle}, площа ${metres} м.кв, ${rooms && rooms > 4 ? 'Кімнат' : 'Кімнати'}`;
+    const shortDesc = `Придбати ${subtitle}, площа ${metres} м.кв, ${rooms > 4 ? 'Кімнат' : 'Кімнати'}`;
 
     return (
         <ObjectWrapper background={ main_image && main_image}>
