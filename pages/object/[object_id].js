@@ -35,7 +35,7 @@ import {
 // }
 
 export async function getServerSideProps(cxt) {
-    const res = await fetch(`http://185-229-224-187.cloud-xip.io/lizena/object/${cxt.query.object_id}`);
+    const res = await fetch(`https://lizena.com.ua/lizena/object/${cxt.query.object_id}`);
     const data = await res.json();
 
     return {
