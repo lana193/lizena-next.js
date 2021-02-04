@@ -127,7 +127,7 @@ const ObjectForSale = (props) => {
         objectId && handleGetObject(objectId);
     }, [handleGetObject, objectId])
 
-    const shortDesc = `Придбати ${subtitle}, площа ${metres} м.кв, ${rooms > 4 ? 'Кімнат' : 'Кімнати'}`;
+    const shortDesc = `Придбати ${subtitle}, площа ${metres} м.кв, ${rooms > 4 ? `${rooms} кімнат` : `${rooms} кімнати`}`;
 
     return (
         <ObjectWrapper background={ main_image && main_image}>

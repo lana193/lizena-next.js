@@ -108,7 +108,7 @@ const ContactsContainer = styled.div`
 
 const Contacts = (props) => {
     const { handleSendMessage } = props;
-
+    const contactsDesc = "Замовляйте ремонт, Львів та околиці. Контакти: тел.: +38 (067) 90 44 630, +38 (097) 66 08 663, email: lizenabud@gmail.com, м. Львів, вул. Богданівська, 11а";
     const handleSubmit = (values) => {
         handleSendMessage(values);
     }
@@ -116,7 +116,14 @@ const Contacts = (props) => {
         <ContactsContainer>
             <Head>
                 <title>Лізена | Контакти</title>
-                <meta name='description' content='Лізена - Контакти | тел.: +38 (067) 90 44 630, +38 (097) 66 08 663, email: lizenabud@gmail.com, м. Львів, вул. Богданівська, 11а' />
+                <meta name="title" content="Лізена | Контакти"/>
+                <meta name="description" content={contactsDesc}/>
+
+                <meta property="og:type" content="website"/>
+                <meta property="og:url" content="http://lizena.com.ua/contacts/"/>
+                <meta property="og:title" content="Лізена | Контакти"/>
+                <meta property="og:description" content={contactsDesc}/>
+                <meta property="og:image" content="/logo.jpg"/>
             </Head>
             <div className='contacts-background'></div>
             <div className='contacts-wrapper'>
