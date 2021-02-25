@@ -1,4 +1,4 @@
-import { getService, postService, deleteService, updateService } from '../../services';
+import { getService, postService, deleteService, updateService, deleteArrayValueService } from '../../services';
 import actionTypes from './actionTypes';
 
 const getObjects = () => ({
@@ -53,5 +53,16 @@ const updateObject = (objectId, objectData, jwtToken) => ({
 export const handleUpdateObject = (objectId, objectData, jwtToken) => {
     return async(dispatch) => {
         await dispatch(updateObject(objectId, objectData, jwtToken));
+    }
+};
+
+const editObjectPhotos = (objectId, img, objectData, jwtToken) => ({
+    type: actionTypes.EDIT_OBJECT_PHOTOS,
+    payload: updateService(`lizena/object/${objectId}/image/${img}`, objectData, { headers: {Authorization: `Bearer ${jwtToken}`}})
+})
+
+export const handleEditObjectPhotos = (objectId, img, objectData, jwtToken) => {
+    return async(dispatch) => {
+        await dispatch(editObjectPhotos(objectId, img, objectData, jwtToken));
     }
 };

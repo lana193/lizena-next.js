@@ -1,9 +1,5 @@
-
 import axios from 'axios';
-// const baseUrl = 'https://tranquil-forest-59795.herokuapp.com/'
-// const baseUrl = 'http://localhost:3003/'
-//const baseUrl = 'http://185-229-224-187.cloud-xip.io/';
-const baseUrl = 'https://lizena.com.ua/'
+import { baseUrl } from '../config/base';
 
 export const getService = (url, options={}) => {
     try {

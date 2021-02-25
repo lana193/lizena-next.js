@@ -55,3 +55,14 @@ export const handleUpdateProject = (projectId, projectData, jwtToken) => {
         await dispatch(updateProject(projectId, projectData, jwtToken));
     }
 };
+
+const editProjectPhotos = (projectId, img, projectData, jwtToken) => ({
+    type: actionTypes.EDIT_PROJECT_PHOTOS,
+    payload: updateService(`lizena/project/${projectId}/image/${img}`, projectData, { headers: {Authorization: `Bearer ${jwtToken}`}})
+})
+
+export const handleEditProjectPhotos = (objectId, img, objectData, jwtToken) => {
+    return async(dispatch) => {
+        await dispatch(editProjectPhotos(objectId, img, objectData, jwtToken));
+    }
+};

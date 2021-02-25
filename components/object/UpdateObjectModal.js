@@ -65,7 +65,7 @@ const UpdateObjectModal = (props) => {
         })
       } 
 
-      handleUpdateObject(objectId, fd).then(console.log(8888, 'update OBJECT'))//handleGetObject(objectId));
+      handleUpdateObject(objectId, fd, currentUserToken).then(() => handleGetObject(objectId));//handleGetObject(objectId));
     }
     closeModal();
 }

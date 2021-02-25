@@ -17,6 +17,8 @@ export const projectsReducer = (state=initialStateProjects, action={}) => {
             return {...state, projects: state.projects.filter(project => project._id !== action.payload)}
         case actionTypes.UPDATE_PROJECT_FULFILLED:
             return {...state, projects: state.projects.map(project => project._id === action.payload.data._id ? action.payload.data : project)};
+        case actionTypes.EDIT_PROJECT_PHOTOS_FULFILLED:
+            return {...state, projects: state.projects.map(project => project._id === action.payload.data._id ? action.payload.data : project)};
         default: 
             return state;
     }

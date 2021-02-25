@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-// import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import styled from 'styled-components';
 
-import ProjectGallery from '../project/ProjectGallery';
+import Gallery from '../shared/Gallery';
 import DeleteObjectModal from './DeleteObjectModal';
 import UpdateObjectModal from './UpdateObjectModal';
+import AddImageModal from '../shared/AddImageModal';
 import useCurrentUserToken from '../../src/utils/useCurrentUserToken';
 import { H3, P2 } from '../../src/theme/StyledElements';
 
@@ -107,6 +107,7 @@ const ObjectWrapper = styled.div`
 
     .gallery-wrapper {
         width: 100%;
+        margin: 0 auto;
 
         .gallery {
             padding-top: 20px;
@@ -116,8 +117,9 @@ const ObjectWrapper = styled.div`
 `;
 
 const ObjectForSale = (props) => {
-    const { handleGetObject, selectedObject, handleDeleteObject, handleUpdateObject, objectData } = props;
-    const { main_image, object_name, subtitle, metres, rooms, price, description, photos, _id } = objectData;
+    const { handleGetObject, selectedObject, handleDeleteObject, handleUpdateObject, objectData, handleEditObjectPhotos } = props;
+    const { main_image, object_name, subtitle, metres, rooms, price, description, photos } = selectedObject;
+    
     const router = useRouter();
     const objectId = router.query.object_id;
 
@@ -130,7 +132,7 @@ const ObjectForSale = (props) => {
     const shortDesc = `Придбати ${subtitle}, площа ${metres} м.кв, ${rooms > 4 ? `${rooms} кімнат` : `${rooms} кімнати`}`;
 
     return (
-        <ObjectWrapper background={ main_image && main_image}>
+        <ObjectWrapper background={main_image && main_image}>
             <Head>
                 {/* Primary */}
                 <title>{`Купити котедж | ${object_name}`}</title>
@@ -139,32 +141,11 @@ const ObjectForSale = (props) => {
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website"/>
-                <meta property="og:url" content={`http://lizena.com.ua/object/${_id}`}/>
-                <meta property="og:title" content={`Купити котедж | ${object_name}`}/>
-                <meta property="og:description" content={shortDesc}/>
-                <meta property="og:image" content={main_image}/>
+                <meta property="og:url" content={`http://lizena.com.ua/object/${objectData._id}`}/>
+                <meta property="og:title" content={`Купити котедж | ${objectData.object_name}`}/>
+                <meta property="og:description" content={objectData.shortDesc}/>
+                <meta property="og:image" content={objectData.main_image}/>
             </Head>
-            {/* <NextSeo
-                title = {`Купити котедж - ${object_name && object_name}`}
-                description={`Придбати ${subtitle && subtitle}, площа ${metres && metres} м.кв, ${rooms && rooms > 4 ? 'Кімнат' : 'Кімнати'}`}
-                canonical={`http://www.lizena.com.ua/object/${_id}`}
-                openGraph={{
-                    type: 'website',
-                    url: `http://www.lizena.com.ua/object/${_id}`,
-                    title: `Купити котедж - ${object_name && object_name}`,
-                    description: `Придбати ${subtitle && subtitle}, площа ${metres && metres} м.кв, ${rooms && rooms > 4 ? 'Кімнат' : 'Кімнати'}`,
-                    images: [
-                        {
-                            url: `${main_image}`,
-                            width: 800,
-                            height: 600,
-                            alt: `${subtitle && subtitle} - ${object_name && object_name}`,
-                        },
-                    ],
-                    site_name: 'Lizena',
-                    tags: ['купити', 'котедж', 'львів'],
-                }}
-            /> */}
             {objectData &&
                 <>
                     <div className='object-main-info'>
@@ -180,9 +161,26 @@ const ObjectForSale = (props) => {
                         <P2>{description}</P2>
                     </div>
                     <div className='gallery-wrapper'>
-                        <H3>Галерея</H3>
+                        <H3>Галерея</H3> 
+                        { currentUserToken && 
+                            <div> 
+                                <AddImageModal 
+                                    id={objectId}
+                                    handleUpdate={handleUpdateObject}
+                                    handleGet={handleGetObject}
+                                    currentUserToken={currentUserToken}
+                                /> 
+                            </div>
+                        }
                         <div className='gallery'>
-                            <ProjectGallery photos={photos} />
+                            <Gallery 
+                                photos={photos} 
+                                id={objectId}
+                                currentUserToken={currentUserToken} 
+                                handleGet={handleGetObject}
+                                handleEditPhotos={handleEditObjectPhotos}
+                                folder='objects'
+                            />
                         </div>
                     </div>
 

@@ -17,6 +17,8 @@ export const objectsReducer = (state=initialStateObjects, action={}) => {
             return {...state, objects: state.objects.filter(object => object._id !== action.payload)}
         case actionTypes.UPDATE_OBJECT_FULFILLED:
             return {...state, objects: state.objects.map(object => object._id === action.payload.data._id ? action.payload.data : object)};
+        case actionTypes.EDIT_OBJECT_PHOTOS_FULFILLED:
+            return {...state, objects: state.objects.map(object => object._id === action.payload.data._id ? action.payload.data : object)};
         default: 
             return state;
     }

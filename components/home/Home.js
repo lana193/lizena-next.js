@@ -123,7 +123,7 @@ const Home = (props) => {
           <div className='buy-appartment'>
             <Link href='/for-sale'>
               <button>Придбати котедж
-                <span><RightArrow/></span> 
+                <span><RightArrow/></span>
               </button>
             </Link>
             <KeyIcon />
