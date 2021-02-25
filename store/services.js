@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { baseUrl } from '../config/base';
+const baseUrl = 'https://lizena.com.ua/';
 
 export const getService = (url, options={}) => {
     try {

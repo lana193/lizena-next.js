@@ -30,7 +30,7 @@ import {
 export default connect(mapStateToProps, mapDispatchToProps)(ObjectForSale);
 
 export async function getServerSideProps(cxt) {
-    const res = await fetch(`${baseUrl}lizena/object/${cxt.query.object_id}`);
+    const res = await fetch(`https://lizena.com.ua/lizena/object/${cxt.query.object_id}`);
     const data = await res.json();
 
     return {
