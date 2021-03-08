@@ -1,5 +1,5 @@
 import { Field, Form, reduxForm } from 'redux-form';
-import { InputField, TextAreaField, SmallButton, FileInputField } from '../elements';
+import { SmallButton, FileInputField } from '../elements';
 
 const EditImageForm = (props) => {
     const { handleSubmit } = props;

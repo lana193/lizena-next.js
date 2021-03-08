@@ -7,13 +7,13 @@ import AddObjectModal from './AddObjectModal';
 import useCurrentUserToken from '../../src/utils/useCurrentUserToken';
 
 const ObjectsContainer = styled.div`
-    padding: 70px 0 150px 0;
+    padding: ${props => props.theme.paddings.wrapperPadding};
     width: 100%;
     min-height: 80vh;
 
-    @media only screen and (max-width: 767.98px) {
-        padding: 60px 0 50px 0;
-    }
+    // @media only screen and (max-width: 767.98px) {
+    //     padding: 60px 0 50px 0;
+    // }
 
     .objects-wrapper {
         display: flex;
@@ -42,9 +42,9 @@ const Objects = ({
             </Head>
             
             { currentUserToken && <AddObjectModal 
-                                    handleCreateObject={handleCreateObject}
-                                    handleGetObjects={handleGetObjects}
-                                    currentUserToken={currentUserToken}
+                                        handleCreateObject={handleCreateObject}
+                                        handleGetObjects={handleGetObjects}
+                                        currentUserToken={currentUserToken}
                                     /> 
             }      
                 <div className='objects-wrapper'>

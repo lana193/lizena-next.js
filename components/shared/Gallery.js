@@ -7,6 +7,8 @@ import DeleteImageModal from './DeleteImageModal';
 import 'swiper/css/swiper.css';
 
 const GalleryWrapper = styled.div`
+  margin: 0 auto;
+
   .swiper-container {
     z-index: 0;
   }
@@ -88,7 +90,6 @@ const Gallery = (props) => {
                   </span>
                 )
               }
-              {/* <span><EditIcon/><DeleteIcon/></span> */}
             </SwiperSlideWrapper>
           );
         }

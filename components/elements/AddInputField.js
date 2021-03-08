@@ -1,7 +1,17 @@
 import styled from 'styled-components';
+import { AddIcon } from '../../src/icons/Icons';
 
-const InputFieldWrapper = styled.div`
+const InputFieldContainer = styled.div`
   text-align: left;
+
+  .input-wrapper {
+    display: flex;
+    width: 100%;
+    // align-items: flex-end;
+    // padding: 12px 20px;
+    margin: 8px 0;
+  }
+
   span {
     color: red;
     font-family: 'Open Sans', sans-serif;
@@ -13,7 +23,7 @@ const InputFieldWrapper = styled.div`
 const StyledInput = styled.input`
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -37,14 +47,15 @@ const StyledInput = styled.input`
   }
 `;
 
-export const InputField = ({ input, label, placeholder, type, meta: { touched, error, warning }}) => {
+export const AddInputField = ({ input, handleAddClick, label, placeholder, type, id, meta: { touched, error, warning }}) => {
   return (
-    <InputFieldWrapper>
+    <InputFieldContainer>
       <label>{label}</label>
-      <div>
-        <StyledInput {...input} placeholder={placeholder} type={type} />
+      <div className='input-wrapper'>
+        <StyledInput {...input} placeholder={placeholder} type={type}  id={id}/>
+        <AddIcon onClick={handleAddClick} />
         {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
       </div>
-    </InputFieldWrapper>
+    </InputFieldContainer>
   )
 }

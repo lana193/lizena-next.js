@@ -14,7 +14,7 @@ const PackageLi = styled.li`
     padding: calc(${planPadding} / 2);
 
     ::before {
-        content: url(${props => props.available ? '/doneIcon.svg' : '/closeIcon.svg'});
+        content: url(${props => props.available ? '/doneServiceIcon.svg' : '/closeIcon.svg'});
         color: ${accentColor};
         display: inline-block; 
         width: 1.5em;

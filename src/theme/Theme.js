@@ -12,5 +12,11 @@ export const theme = {
     fonts: {
         links: 'Raleway, sans-serif',
         main: 'Nunito Sans, sans-serif'
+    },
+    paddings: {
+        wrapperPadding: '60px 1em 2em 1em'
+    },
+    margins: {
+        topMargin: '2em'
     }
 }

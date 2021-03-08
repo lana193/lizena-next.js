@@ -5,6 +5,8 @@ const ButtonContainer = styled.button`
     border: none;
     color: white;
     padding: 15px 32px;
+    // padding: 0;
+    margin: 0;
     text-align: center;
     text-decoration: none;
     display: inline-block;

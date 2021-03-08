@@ -1,11 +1,48 @@
+import { useState } from 'react';
 import { Field, Form, reduxForm } from 'redux-form';
-import { InputField, TextAreaField, SmallButton, FileInputField } from '../elements';
+import { InputField, TextAreaField, SmallButton, FileInputField, AddInput } from '../elements';
+import { DeleteIcon } from '../../src/icons/Icons';
+
+import styled from 'styled-components';
+
+const StyledTagsWrapper = styled.div`
+    padding: 0px 0px 20px 12px;
+
+    .tag-container {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    span {
+        border-radius: 15%;
+    }
+
+`;
 
 const UpdateObjectForm = (props) => {
-    const { handleSubmit, initialValues } = props;
+    const { handleSubmit, initialvalues, tags, setTags } = props;
+    console.log('TAGS', tags);
+    const [tag, setTag] = useState('');
+
+    const handleTagChange = (e) => {
+        setTag(e.target.value);
+    }
+
+    const handleAddClick = () => {
+        if (tag) {
+            setTags([...tags, tag])
+            setTag('');
+        }
+    }
+
+    const handleRemoveTag = (tagName) => {
+        const filteredTags = tags.filter(item => item !== tagName);
+        setTags(filteredTags);
+    }
+
     return (
         <div>
-            <Form onSubmit={handleSubmit} initialValues={initialValues} >
+            <Form onSubmit={handleSubmit} initialValues={initialvalues} >
                 <div className='form-container'>
                     <Field
                         name='object_name'
@@ -26,10 +63,30 @@ const UpdateObjectForm = (props) => {
                     <Field
                         name='description'
                         component={TextAreaField}
-                        type='textarea'
+                        type='text'
                         placeholder="Опис об'єкту"
                         label="Опис об'єкту"
                     />
+
+                    <AddInput
+                        name='work'
+                        type='text'
+                        placeholder='Робота'
+                        label='Додати роботу'
+                        onChange={handleTagChange}
+                        handleAddClick={handleAddClick}
+                        value={tag}
+                    />
+                    <StyledTagsWrapper> Список робіт:
+                        {tags.map((item, index) => {
+                        return (
+                            <div className='tag-container' key={index} >
+                                <span> - {item}</span>
+                                <DeleteIcon small={true} onClick={() => handleRemoveTag(item)} />
+                            </div>
+                        );
+                    })}
+                    </StyledTagsWrapper>
 
                     <Field
                         name='conclusion'
@@ -70,22 +127,22 @@ const UpdateObjectForm = (props) => {
                         label='Ціна'
                     />
 
-                    <Field 
-                        name='main_image' 
-                        label='Головне зображення' 
-                        component={FileInputField} 
-                        multiple={false} 
+                    <Field
+                        name='main_image'
+                        label='Головне зображення'
+                        component={FileInputField}
+                        multiple={false}
                     />
 
-                    <Field 
-                        name='photos' 
-                        label='Галерея' 
-                        component={FileInputField} 
-                        multiple={true} 
+                    <Field
+                        name='photos'
+                        label='Галерея'
+                        component={FileInputField}
+                        multiple={true}
                     />
                 </div>
                 <div className='button-wrapper'>
-                    <SmallButton name='Зберегти зміни' type='submit' />
+                    <SmallButton name='Зберегти зміни' width='50%' margin='5px 25% 5px 25%' type='submit' />
                 </div>
             </Form>
         </div>
@@ -95,5 +152,6 @@ const UpdateObjectForm = (props) => {
 export default reduxForm({
     form: 'edit-object-form',
     enableReinitialize: true,
-    updateUnregisteredFields: true
+    updateUnregisteredFields: true,
+    keepDirtyOnReinitialize: true
 })(UpdateObjectForm);

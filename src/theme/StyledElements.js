@@ -20,14 +20,14 @@ export const H2 = styled.h2`
 export const H3 = styled.h3`
     color: ${(props) => props.theme.colors.darkslategray};
     font-weight: 700;
-    font-size: 25px;
+    font-size: 1.5em;
     font-family: 'Source Sans Pro', sans-serif;
     padding: 1em 0 0 0;
     text-align: center;
     text-transform: uppercase;
 
     @media only screen and (max-width: 767.98px) {
-        font-size: 25px;
+        font-size: 1.2em;
     }
 
 `;
@@ -44,6 +44,17 @@ export const P2 = styled.p`
    font-size: 1.2em;
    font-weight: 500;
    padding: 20px 10px;
+`;
+
+export const P3 = styled.p`
+   font-family: 'Montserrat', sans-serif;
+   font-size: 1.2em;
+   font-weight: 500;
+   padding: 0.5em 1em 0.5em 1.5em;
+   text-align: left;
+   @media only screen and (max-width: 767.98px) {
+        font-size: 1.1em;
+    }
 `;
 
 export const H4 = styled.h4`

@@ -318,14 +318,17 @@ export const RightArrow = () => {
 
 const StyledModifyIcon = styled.svg`
     cursor: pointer;
+    fill: ${props => props.small ? 'rgba(71, 71, 71, 0.8)' : 'white' };
+    width: 1.5em;
+    height: 1.5em;
 `;
 
 export const DeleteIcon = (props) => {
     return (
-        <StyledModifyIcon {...props} xmlns="http://www.w3.org/2000/svg" aria-hidden="false" focusable="false" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+        <StyledModifyIcon {...props} xmlns="http://www.w3.org/2000/svg" aria-hidden="false" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
             <g>
                 <title>Видалити</title>
-                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12l1.41 1.41L13.41 14l2.12 2.12l-1.41 1.41L12 15.41l-2.12 2.12l-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z" fill="white"/>
+                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12l1.41 1.41L13.41 14l2.12 2.12l-1.41 1.41L12 15.41l-2.12 2.12l-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"/>
             </g>
         </StyledModifyIcon>
     );
@@ -333,14 +336,31 @@ export const DeleteIcon = (props) => {
 
 export const EditIcon = (props) => {
     return (
-        <StyledModifyIcon {...props} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024">
+        <StyledModifyIcon {...props} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024">
             <g>
                 <title>Редагувати</title>
-                <path d="M880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32zm-622.3-84c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 0 0 0-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 0 0 9.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9z" fill="white"/>
+                <path d="M880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32zm-622.3-84c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 0 0 0-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 0 0 9.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9z" />
             </g>
         </StyledModifyIcon>
     );
 }
+
+const StyledAddIcon = styled.svg`
+    cursor: pointer;
+    fill: rgba(71, 71, 71, 0.8);
+`;
+
+export const AddIcon = (props) => {
+    return (
+        <StyledAddIcon {...props} xmlns="http://www.w3.org/2000/svg"  aria-hidden="true" focusable="false" width="3em" height="3em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <g fill="none">
+                <path d="M3 6.25A3.25 3.25 0 0 1 6.25 3h11.5A3.25 3.25 0 0 1 21 6.25v11.5A3.25 3.25 0 0 1 17.75 21H6.25A3.25 3.25 0 0 1 3 17.75V6.25zm9.75 1.5a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5z" fill="rgb(60,179,113)" />
+            </g>
+        </StyledAddIcon>
+    );
+}
+
+
 
 
 {/* <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36"><path class="clr-i-solid clr-i-solid-path-1" d="M4.22 23.2l-1.9 8.2a2.06 2.06 0 0 0 2 2.5a2.14 2.14 0 0 0 .43 0L13 32l15.84-15.78L20 7.4z" fill="white"/><path class="clr-i-solid clr-i-solid-path-2" d="M33.82 8.32l-5.9-5.9a2.07 2.07 0 0 0-2.92 0L21.72 5.7l8.83 8.83l3.28-3.28a2.07 2.07 0 0 0-.01-2.93z" fill="white"/></svg> */}

@@ -10,6 +10,8 @@ import { SmallButton } from '../elements';
 const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
+  padding: 0;
+  margin-top: 1em;
 `;
  
 const customStyles = {
@@ -73,7 +75,7 @@ const AddObjectModal = (props) => {
 }
 
 return (
-  <ModalWrapper> <div></div>
+  <ModalWrapper>
     <SmallButton name="Додати новий об'єкт" onClick={openModal} width='300px'/>
       <Modal
         ariaHideApp={false}

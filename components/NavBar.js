@@ -6,12 +6,14 @@ import styled from 'styled-components';
 import { HomeIcon, OpenMenuIcon, CloseMenuIcon } from '../src/icons/Icons';
 
 const NavBarContainer = styled.nav`
-    z-index: 2;
+    height: 60px;
     width: 100%;
+    padding: 0 1.5em;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 0.3em 1.5em 0.3em 1.5em;
     background-color: white;
+    z-index: 2;
     position: fixed;
 
     .nav-left {

@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const ButtonContainer = styled.button`
     background-color: ${props => props.danger ? props.theme.colors.darkRed : props.theme.colors.mediumseagreen};
     width: ${props => props.width ? props.width : '100%'};
+    margin: ${props => props.margin ? props.margin : '0'};
     color: white;
     padding: 14px 20px;
-    margin: 8px 5px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -17,13 +17,15 @@ const ButtonContainer = styled.button`
     }
 
     @media screen and (max-width: 600px) {
+        width: 100%;
+        margin: ${props => props.margin ? '5px' : '0'};
     }
   
 `;
 
-export const SmallButton = ({ name, type, onClick, danger, width }) => {
+export const SmallButton = ({ name, type, onClick, danger, width, margin }) => {
     return (
-        <ButtonContainer danger={danger} type={type} onClick={onClick} width={width}>
+        <ButtonContainer danger={danger} type={type} onClick={onClick} width={width} margin={margin}>
             {name}
         </ButtonContainer>
     );

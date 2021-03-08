@@ -8,7 +8,7 @@ import DeleteObjectModal from './DeleteObjectModal';
 import UpdateObjectModal from './UpdateObjectModal';
 import AddImageModal from '../shared/AddImageModal';
 import useCurrentUserToken from '../../src/utils/useCurrentUserToken';
-import { H3, P2 } from '../../src/theme/StyledElements';
+import { H3, P3 } from '../../src/theme/StyledElements';
 
 const ObjectWrapper = styled.div`
     display: flex;
@@ -16,38 +16,55 @@ const ObjectWrapper = styled.div`
     padding: 100px 0 150px 0;
     flex-wrap: wrap;
     justify-content: center;
+    width: 70%;
+    margin: 0 auto;
 
     @media only screen and (max-width: 767.98px) {
         padding: 60px 0 50px 0;
+        width: 100%;
     }
 
     .object-main-info {
-        display: flex;
-        width: 70%;
+        width: 80%;
         height: 600px;
+        display: flex;
         align-items: flex-end;
         background-image:  url(${props => props.background});
-        background-size: cover;
+        background-size: cover, contain;
         background-repeat: no-repeat;
         background-position: center;
 
         @media only screen and (max-width: 767.98px) {
+            background-size: cover;
             width: 100%;
             height: 350px;
         }
 
-            p {
-                font-size: 1.3em;
+            p, h1 {
+                // font-size: 1.3em;
                 text-transform: uppercase;
-                padding: 1em 3em;
+                font-weight: normal;
+            }
+
+            @media only screen and (max-width: 767.98px) {
+                background-size: cover;
+                width: 100%;
+                height: 350px;
             }
 
             .object-title {
                 width: 70%;
                 height: 50px;
-                vertical-align: middle;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
                 position: relative;
                 background: ${props => props.theme.colors.mediumseagreen};
+                padding-left: 3em;
+                
+                @media only screen and (max-width: 767.98px) {
+                    padding-left: 1.8em;
+                }
                  
                 :after {
                     content: "";
@@ -61,7 +78,7 @@ const ObjectWrapper = styled.div`
                     border-bottom: 25px solid transparent;
                 }
 
-                .p-title {
+                .h1-title, .p-title {
                     font-size: 1em;
                     color: ${props => props.theme.colors.aliceBlue};
 
@@ -69,14 +86,22 @@ const ObjectWrapper = styled.div`
                         color: ${props => props.theme.colors.aliceBlue};
                     }
                 }
+
+                .h1-title {
+                    margin-right: 5px;
+                    
+                }
+
             }
 
             .object-price {
                 width: 30%;
                 height: 50px;
-                vertical-align: middle;
                 position: relative;
                 background: ${props => props.theme.colors.aliceBlue};
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
                  
                 :after {
                     content: "";
@@ -91,9 +116,13 @@ const ObjectWrapper = styled.div`
                 }
 
                 .p-price {
-                    font-size: 1.5em;
-                    padding: 0.5em 0.2em;
+                    font-size: 1.3em;
+                    padding-right: 0.5em;
                     text-align: right;
+                    @media only screen and (max-width: 767.98px) {
+                        padding-right: 0.2em;
+                        font-size: 1.2em;
+                    }
                 }
                   
             }
@@ -103,11 +132,33 @@ const ObjectWrapper = styled.div`
 
     .object-desc {
         width: 100%;
+        text-align: left;
+
+        p {
+            margin-bottom: 0.2em;
+        }
+
+        ul {
+            padding: 0 5em 1em 4em;
+            list-style-image: url('/doneIcon.svg');
+            vertical-align: center;
+
+            li {
+                font-size: 1.2em;
+                font-weight: 500;
+                font-family: 'Montserrat', sans-serif;
+                @media only screen and (max-width: 767.98px) {
+                     font-size: 1.1em;
+                 }
+
+            }
+        }
     }
 
     .gallery-wrapper {
         width: 100%;
         margin: 0 auto;
+        text-align: center;
 
         .gallery {
             padding-top: 20px;
@@ -118,7 +169,7 @@ const ObjectWrapper = styled.div`
 
 const ObjectForSale = (props) => {
     const { handleGetObject, selectedObject, handleDeleteObject, handleUpdateObject, objectData, handleEditObjectPhotos } = props;
-    const { main_image, object_name, subtitle, metres, rooms, price, description, photos } = selectedObject;
+    const { main_image, object_name, subtitle, metres, rooms, price, description, photos, conclusion, works } = selectedObject;
     
     const router = useRouter();
     const objectId = router.query.object_id;
@@ -150,7 +201,7 @@ const ObjectForSale = (props) => {
                 <>
                     <div className='object-main-info'>
                         <div className='object-title'>
-                            <p className='p-title'>{object_name} • {metres} м<sup>2</sup></p>
+                            <h1 className='h1-title'>{object_name} </h1><p className='p-title'> • {metres} м<sup>2</sup></p>
                         </div>
                         <div className='object-price'>
                             <p className='p-price'> {price} $</p>
@@ -158,7 +209,28 @@ const ObjectForSale = (props) => {
                     </div>
                     <div className='object-desc'>
                         <H3>Опис котеджу</H3>
-                        <P2>{description}</P2>
+                        { description && description.split("\n").map((paragraph, index) => {
+                            return (
+                            <P3 key={index}>{paragraph}</P3>
+                            )})
+                        }
+                        {works && <P3>У будинку:</P3>}
+                        { works &&
+                            <ul>
+                                {works.map((work, index) => {
+                                    return (
+                                        <li key={index}>{work}</li>
+                                    )
+                                })}
+                            </ul>
+                        }
+                            
+                    { conclusion && conclusion.split("\n").map((paragraph, index) => {
+                            return (
+                            <P3 key={index}>{paragraph}</P3>
+                            )})
+                        }
+                        
                     </div>
                     <div className='gallery-wrapper'>
                         <H3>Галерея</H3> 
