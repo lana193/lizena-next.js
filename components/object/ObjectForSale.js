@@ -194,7 +194,7 @@ const ObjectForSale = (props) => {
                 <meta property="og:type" content="website"/>
                 <meta property="og:url" content={`http://lizena.com.ua/object/${objectData._id}`}/>
                 <meta property="og:title" content={`Купити котедж | ${objectData.object_name}`}/>
-                <meta property="og:description" content={objectData.shortDesc}/>
+                <meta property="og:description" content={shortDesc}/>
                 <meta property="og:image" content={objectData.main_image}/>
             </Head>
             {objectData &&
