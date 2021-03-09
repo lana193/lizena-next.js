@@ -43,7 +43,7 @@ const Projects = ({
         <ProjectsContainer>
             <Head>
                 <title>Лізена | Наші роботи</title>
-                <meta name='description' content='Лізена - наші роботи | Ремонтно-будівельні роботи, Львів' />
+                <meta name='description' content="Ремонтно-будівельні роботи, у м. Львів, ремонт квартир, будинків, шпаклювання та малярка, розведення води та електрики, реконструкція балкону, дерев'яні вироби" />
             </Head>
             <div>
                 {currentUserToken && 

@@ -97,7 +97,7 @@ const H1 = styled.h1`
 
 const Home = (props) => {
   const { handleSendMessage } = props;
-  const homeDesc = 'Будівництво та продаж нерухомості у Львові, +38 (067) 90 44 630, +38 (097) 66 08 663; м. Львів, вул. Богданівська, 11а';
+  const homeDesc = "Будівництво та продаж нерухомості у Львові та околицях, надаємо якісні ремонтні послуги: дрібні будівельні роботи, ремонт під ключ - будівельна компанія Lizena";
   return (
     <div
     // className={styles.container}
@@ -106,6 +106,7 @@ const Home = (props) => {
         <title>Лізена | Будівельно-ремонтна компанія</title>
         <meta name="title" content='Лізена | Будівельно-ремонтна компанія'/>
         <meta name="description" content={homeDesc}/>
+        <meta name="keywords" content="лізена, компанія лізена, lizena, будівельна компанія, будівництво львів, ремонт будинків львів, ремонт під ключ, ремонтні послуги, будівельно-ремонтна компанія, продаж котеджів львів, купити котедж львів, купити будинок, будівельні роботи, ремонт з нуля, ремонт під ключ, будинки у Львові"/>
 
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="http://lizena.com.ua/"/>

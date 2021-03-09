@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import { H2, P2 } from '../../src/theme/StyledElements';
@@ -19,8 +19,8 @@ const ByApartment = () => {
     return (
         <ByApartmentContainer>
             <H2>Бажаєте придбати житло?</H2>
-            <P2 className='big-letter-p'>Компанія Лізена займається будівництвом котеджів та квартир під продаж.</P2>
-            {/* <Link to={'/for-sale'}><BigButton name={"Перегляньте доступні об'єкти"} /></Link> */}
+            <P2 className='big-letter-p'>Компанія Лізена займається будівництвом котеджів та квартир у Львові та околицях під продаж.</P2>
+            <Link href='/for-sale'><BigButton name={"Переглянути доступні об'єкти"} /></Link>
         </ByApartmentContainer>
     );
 }

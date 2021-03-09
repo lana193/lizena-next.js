@@ -37,8 +37,8 @@ const Objects = ({
     return (
         <ObjectsContainer>
             <Head>
-                <title>Лізена | Об'єкти під продаж</title>
-                <meta name='description' content='Будівельно-ремонтна компанія Лізена | Продаж котеджів Львів' />
+                <title>Лізена | Купити котедж</title>
+                <meta name='description' content='Продаж котеджів та будинків у м. Львів та околицях, купити двохповерховий будинок у Рясне, с. Запитів. Придбайте житло у нас - компанія Lizena'/>
             </Head>
             
             { currentUserToken && <AddObjectModal 

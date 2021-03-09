@@ -180,14 +180,14 @@ const ObjectForSale = (props) => {
         objectId && handleGetObject(objectId);
     }, [handleGetObject, objectId])
 
-    const shortDesc = `Придбати ${subtitle}, площа ${metres} м.кв, ${rooms > 4 ? `${rooms} кімнат` : `${rooms} кімнати`}`;
+    const shortDesc = `Купити ${objectData.subtitle}, площа ${objectData.metres} м.кв, ${objectData.price}$, ${objectData.rooms > 4 ? `${objectData.rooms} кімнат` : `${objectData.rooms} кімнати`}`;
 
     return (
         <ObjectWrapper background={main_image && main_image}>
             <Head>
                 {/* Primary */}
-                <title>{`Купити котедж | ${object_name}`}</title>
-                <meta name="title" content={`Купити котедж | ${object_name}`}/>
+                <title>{`Купити котедж | ${objectData.object_name}`}</title>
+                <meta name="title" content={`Купити котедж | ${objectData.object_name}`}/>
                 <meta name="description" content={shortDesc}/>
 
                 {/* Open Graph / Facebook */}
