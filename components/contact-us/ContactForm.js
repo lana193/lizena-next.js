@@ -41,7 +41,7 @@ const ContactForm = (props) => {
                     />
                 </div>
                 <div className='button-wrapper'>
-                    <SmallButton name='Надіслати' type='submit'  />
+                    <SmallButton name='Надіслати' width='100%' type='submit'  />
                 </div>
                 {
                     submitSucceeded && <MessageSendedModal showModal={submitSucceeded} closeContactModal={closeContactModal? closeContactModal : false}/>

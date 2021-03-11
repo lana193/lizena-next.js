@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { H2, P2 } from '../../src/theme/StyledElements';
+import { H2, P2, P3 } from '../../src/theme/StyledElements';
 
 const AboutContainer = styled.div`
-    padding: 1em 10em 1em 10em;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1em;
 
     @media only screen and (max-width: 767.98px) {
-        padding: 1em 2em 1em 2em;
+        width: 100%;
+        padding: 1em;
     }
 `;
 

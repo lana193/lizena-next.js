@@ -5,7 +5,11 @@ import { QoulityIcon, TimeIcon, ComfortIcon } from '../../src/icons/Icons';
 import { H2, H5 } from '../../src/theme/StyledElements';
 
 const WhyUsContainer = styled.div`
+    
     padding: 3em 1em 3em 1em;
+    @media only screen and (max-width: 767.98px) {
+        padding: 1em;
+    }
 
     .benefits-container {
         display: flex;
@@ -16,6 +20,9 @@ const WhyUsContainer = styled.div`
         .benefit-wrapper {
             text-align: center;
             margin: 1rem 2rem 3rem 2rem;
+            @media only screen and (max-width: 767.98px) {
+                margin: 0.5em;
+            }
 
             .benefit-desc {
                 width: 325px;

@@ -76,7 +76,7 @@ const AddObjectForm = (props) => {
                     />
                 </div>
                 <div className='button-wrapper'>
-                    <SmallButton name='Створити проєкт' type='submit' />
+                    <SmallButton name='Створити проєкт' width='100%' type='submit' />
                 </div>
             </Form>
         </div>

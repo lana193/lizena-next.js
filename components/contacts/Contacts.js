@@ -2,14 +2,14 @@ import Head from 'next/head';
 import styled from 'styled-components';
 
 import ContactForm from '../contact-us/ContactForm';
-import { P1, H5, H3, H4 } from '../../src/theme/StyledElements';
+import { BodyContainer, P1, H5, H3, H4 } from '../../src/theme/StyledElements';
 import { EnvelopeRoundIcon, PhoneRoundIcon, LocationRoundIcon } from '../../src/icons/Icons';
 
 const ContactsContainer = styled.div`
-    padding-top: 60px;
 
     .contacts-background {
-        margin: 0em 20em 0em 20em;
+        width: 70%;
+        margin: 0 auto;
         height: 500px;
         background-image: url('/contact-us.jpg');
         background-size: cover;
@@ -17,8 +17,8 @@ const ContactsContainer = styled.div`
         background-position: top center;
 
         @media only screen and (max-width: 767.98px) {
+            width: 100%;
             height: 350px;
-            margin: 0;
         }
     }
 
@@ -28,6 +28,7 @@ const ContactsContainer = styled.div`
         padding: 7% 10% 10% 10%;
         text-align: center;
         grid-column-gap: 5em;
+        justify-content: center;
 
         @media only screen and (max-width: 767.98px) {
             grid-template-columns: 1fr;
@@ -64,7 +65,6 @@ const ContactsContainer = styled.div`
             justify-content: center;
             width: 100%;
             text-align: center;
-            margin: 0 auto;
 
             hr {
                 border-top: 2px solid rgba(60,179,113, 0.8);
@@ -74,18 +74,17 @@ const ContactsContainer = styled.div`
             }
 
             .social {
-                padding: 2em 2em 1em 2em;
                 display: flex;
-                justify-content: space-around;
+                justify-content: center;
                 align-atems: center;
                 width: 270px;
-                height: 70px;
                 margin: 0 auto;
     
                 .social-img {
                     width: 50px;
                     height: 50px;
                     cursor: pointer;
+                    margin: 2em 1em;
         
                     :hover {
                         width: 55px;
@@ -113,57 +112,57 @@ const Contacts = (props) => {
         handleSendMessage(values);
     }
     return (
-        <ContactsContainer>
-            <Head>
-                <title>Лізена | Контакти</title>
-                <meta name="title" content="Лізена | Контакти"/>
-                <meta name="description" content={contactsDesc}/>
+        <BodyContainer>
+            <ContactsContainer>
+                <Head>
+                    <title>Лізена | Контакти</title>
+                    <meta name="title" content="Лізена | Контакти"/>
+                    <meta name="description" content={contactsDesc}/>
 
-                <meta property="og:type" content="website"/>
-                <meta property="og:url" content="http://lizena.com.ua/contacts/"/>
-                <meta property="og:title" content="Лізена | Контакти"/>
-                <meta property="og:description" content={contactsDesc}/>
-                <meta property="og:image" content="/logo.jpg"/>
-            </Head>
-            <div className='contacts-background'></div>
-            <div className='contacts-wrapper'>
-                <div className='contacts-column-first'>
-                    <H3>Наші контакти</H3>
-                    <div className='contact-wrapper'>
-                        <EnvelopeRoundIcon />
-                        <P1 className='contact-info'>lizenabud@gmail.com</P1>
-                    </div>
-                    <div className='contact-wrapper'>
-                        <PhoneRoundIcon />
-                        <P1 className='contact-info'><span>+38 (067) 90 44 630,</span><span>+38 (097) 66 08 663</span></P1>
-                    </div>
-                    <div className='contact-wrapper'>
-                        <LocationRoundIcon />
-                        <P1 className='contact-info'>м. Львів, вул. Богданівська, 11а</P1>
-                    </div>
-                    <div className='social-wrapper'>
-                        
-                        <hr className='contacts-hr'/>
-                        <H5>Знайдіть нас у соціальних мережах!</H5>
-                        <div className='social'>
-                            <a href='https://www.facebook.com/lizenabud/?modal=admin_todo_tour'>
-                                <img className='social-img' src={'/social_facebook.png'} alt='Lizena facebook'/>
-                            </a>
-                            <a href='https://www.instagram.com/lizenabud_lviv/?igshid=1vm6luqm2cl0l'>
-                                <img className='social-img' src={'/social_instagram.png'} alt='Lizena instagram'/>
-                            </a>
+                    <meta property="og:type" content="website"/>
+                    <meta property="og:url" content="http://lizena.com.ua/contacts/"/>
+                    <meta property="og:title" content="Лізена | Контакти"/>
+                    <meta property="og:description" content={contactsDesc}/>
+                    <meta property="og:image" content="/logo.jpg"/>
+                </Head>
+                <div className='contacts-background'></div>
+                <div className='contacts-wrapper'>
+                    <div className='contacts-column-first'>
+                        <H3>Наші контакти</H3>
+                        <div className='contact-wrapper'>
+                            <EnvelopeRoundIcon />
+                            <P1 className='contact-info'>lizenabud@gmail.com</P1>
                         </div>
+                        <div className='contact-wrapper'>
+                            <PhoneRoundIcon />
+                            <P1 className='contact-info'><span>+38 (067) 90 44 630,</span><span>+38 (097) 66 08 663</span></P1>
+                        </div>
+                        <div className='contact-wrapper'>
+                            <LocationRoundIcon />
+                            <P1 className='contact-info'>м. Львів, вул. Богданівська, 11а</P1>
+                        </div>
+                        <div className='social-wrapper'>
+                            
+                            <hr className='contacts-hr'/>
+                            <H5>Знайдіть нас у соціальних мережах!</H5>
+                            <div className='social'>
+                                <a href='https://www.facebook.com/lizenabud/?modal=admin_todo_tour'>
+                                    <img className='social-img' src={'/social_facebook.png'} alt='Lizena facebook'/>
+                                </a>
+                                <a href='https://www.instagram.com/lizenabud_lviv/?igshid=1vm6luqm2cl0l'>
+                                    <img className='social-img' src={'/social_instagram.png'} alt='Lizena instagram'/>
+                                </a>
+                            </div>
+                        </div>
+                        
                     </div>
-                    
+                    <div className='contacts-column-second'>
+                        <H4>Напишіть нам</H4>
+                        <ContactForm onSubmit={handleSubmit} />
+                    </div>  
                 </div>
-                <div className='contacts-column-second'>
-                    <H4>Напишіть нам</H4>
-                    <ContactForm onSubmit={handleSubmit} />
-                </div>  
-            </div>
-            
-
-        </ContactsContainer>
+            </ContactsContainer>
+        </BodyContainer>
     );
 }
 

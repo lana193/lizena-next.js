@@ -7,7 +7,9 @@ import DeleteImageModal from './DeleteImageModal';
 import 'swiper/css/swiper.css';
 
 const GalleryWrapper = styled.div`
-  margin: 0 auto;
+  width: 100%;
+  // display: flex;
+  // justify-content: center;
 
   .swiper-container {
     z-index: 0;

@@ -15,7 +15,7 @@ const AddImageForm = (props) => {
                     />
                 </div>
                 <div className='button-wrapper'>
-                    <SmallButton name='Зберегти зміни' type='submit' />
+                    <SmallButton name='Зберегти зміни' width="100%" type='submit' />
                 </div>
             </Form>
         </div>

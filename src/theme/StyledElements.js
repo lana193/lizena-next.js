@@ -1,4 +1,30 @@
 import styled from 'styled-components';
+import { isMobile } from 'react-device-detect';
+
+export const BodyContainer = styled.div`
+    flex-grow: 1;
+    justify-content: center;
+    padding: 60px 0 5em 0;
+    margin: 0;
+    width: 100%;
+    @media only screen and (max-width: 767.98px) {
+        padding: 60px 0 1em 0;
+    }
+`;
+
+export const modalStyles = {
+    content : {
+      top: `${isMobile ? '50%' : '50%'}`,
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      width: `${isMobile ? '95%' : '60%'}`,
+      maxHeight: `${isMobile ? '80vh' : '600px'}`,
+      overflow: 'scroll'
+    }
+  };
 
 export const H2 = styled.h2`
     color: ${(props) => props.theme.colors.darkslategray};
@@ -22,7 +48,7 @@ export const H3 = styled.h3`
     font-weight: 700;
     font-size: 1.5em;
     font-family: 'Source Sans Pro', sans-serif;
-    padding: 1em 0 0 0;
+    padding: 1em 0 0.5em 0;
     text-align: center;
     text-transform: uppercase;
 
@@ -44,6 +70,10 @@ export const P2 = styled.p`
    font-size: 1.2em;
    font-weight: 500;
    padding: 20px 10px;
+   text-align: left;
+   @media only screen and (max-width: 767.98px) {
+    padding: 10px 5px 10px 10px;
+    }
 `;
 
 export const P3 = styled.p`

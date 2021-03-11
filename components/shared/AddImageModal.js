@@ -3,20 +3,21 @@ import Modal from 'react-modal';
 
 import AddImageForm from './AddImageForm';
 import { SmallButton } from '../elements';
+import { modalStyles } from '../../src/theme/StyledElements';
  
-const customStyles = {
-  content : {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '400px',
-    height: 'auto',
-    // overflow: 'scroll'
-  }
-};
+// const customStyles = {
+//   content : {
+//     top: '50%',
+//     left: '50%',
+//     right: 'auto',
+//     bottom: 'auto',
+//     marginRight: '-50%',
+//     transform: 'translate(-50%, -50%)',
+//     width: '400px',
+//     height: 'auto',
+//     // overflow: 'scroll'
+//   }
+// };
 
 const AddImageModal = (props) => {
   const { id, handleGet, currentUserToken, handleUpdate } = props;
@@ -58,13 +59,13 @@ return (
       isOpen={modalIsOpen}
       onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
-      style={customStyles}
+      style={modalStyles}
       ariaHideApp={false}
       contentLabel='Add Image Modal'
     >
       <h2 ref={_subtitle => (subtitle = _subtitle)}>Додати нове/нові фото до галереї</h2>
       <AddImageForm onSubmit={handleSubmit} />
-      <SmallButton danger name='Скасувати' onClick={closeModal}/>
+      <SmallButton danger name='Скасувати' width="100%" onClick={closeModal}/>
     </Modal>
   </div>
   );

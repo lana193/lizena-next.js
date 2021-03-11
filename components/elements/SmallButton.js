@@ -1,10 +1,10 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const ButtonContainer = styled.button`
     background-color: ${props => props.danger ? props.theme.colors.darkRed : props.theme.colors.mediumseagreen};
-    width: ${props => props.width ? props.width : '100%'};
-    margin: ${props => props.margin ? props.margin : '0'};
+    width: ${props => props.width && props.width};
+    // margin: ${props => props.margin ? props.margin : '0'};
+    margin: 0.5em 0;
     color: white;
     padding: 14px 20px;
     border: none;
@@ -17,8 +17,9 @@ const ButtonContainer = styled.button`
     }
 
     @media screen and (max-width: 600px) {
-        width: 100%;
-        margin: ${props => props.margin ? '5px' : '0'};
+        // width: 100%;
+        // margin: ${props => props.margin ? '5px' : '0'};
+        // margin: 1em;
     }
   
 `;

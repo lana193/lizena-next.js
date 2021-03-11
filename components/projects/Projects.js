@@ -5,24 +5,27 @@ import styled from 'styled-components';
 import ProjectCard from './ProjectCard';
 import AddProjectModal from './AddProjectModal';
 import useCurrentUserToken from '../../src/utils/useCurrentUserToken';
+import { BodyContainer } from '../../src/theme/StyledElements';
 
 const ProjectsContainer = styled.div`
-    padding-top: 60px;
     width: 100%;
-    min-height: 80vh;
-    @media only screen and (max-width: 767.98px) {
-        padding-top: 60px;
+
+    .modal-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
+
     .projects-wrapper {
         display: grid;
+        justify-content: center;
         justify-items: center;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 320px 320px 320px;
         grid-gap: 20px 20px;
-        padding: 2em 15em 10em 15em;
+        padding: 1em 0;
     
         @media only screen and (max-width: 767.98px) {
             grid-template-columns: 1fr;
-            padding: 2em 0;
             grid-gap: 20px 0;
         }
     }
@@ -40,12 +43,13 @@ const Projects = ({
     }, [handleGetProjects, selectedProjects.length])
 
     return (
-        <ProjectsContainer>
+        <BodyContainer>
+            <ProjectsContainer>
             <Head>
                 <title>Лізена | Наші роботи</title>
                 <meta name='description' content="Ремонтно-будівельні роботи, у м. Львів, ремонт квартир, будинків, шпаклювання та малярка, розведення води та електрики, реконструкція балкону, дерев'яні вироби" />
             </Head>
-            <div>
+            <div className='modal-wrapper'>
                 {currentUserToken && 
                     <AddProjectModal 
                         handleCreateProject={handleCreateProject} 
@@ -53,7 +57,6 @@ const Projects = ({
                         currentUserToken={currentUserToken} 
                     />
                 }
-
             </div>
 
             <div className='projects-wrapper'>
@@ -63,6 +66,7 @@ const Projects = ({
                 )}
             </div>
         </ProjectsContainer>
+        </BodyContainer>
     )
 }
 

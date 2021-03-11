@@ -3,18 +3,7 @@ import Modal from 'react-modal';
 
 import UpdateProjectForm from './UpdateProjectForm';
 import { SmallButton } from '../elements';
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    zIndex: 2
-  }
-};
+import { modalStyles } from '../../src/theme/StyledElements';
 
 const UpdateProjectModal = (props) => {
   const { handleUpdateProject, projectId, selectedProject, handleGetProject, currentUserToken } = props;
@@ -76,13 +65,13 @@ const UpdateProjectModal = (props) => {
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
+        style={modalStyles}
         ariaHideApp={false}
         contentLabel='Update Project Modal'
       >
         <h2 ref={_subtitle => (subtitle = _subtitle)}>Редагувати роботу</h2>
         <UpdateProjectForm onSubmit={handleSubmit} selectedProject={selectedProject} initialValues={initialValues} />
-        <SmallButton danger name='Скасувати' onClick={closeModal} />
+        <SmallButton danger name='Скасувати' width='100%' onClick={closeModal} />
       </Modal>
     </div>
   );

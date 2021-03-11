@@ -8,17 +8,24 @@ import AddImageModal from '../shared/AddImageModal';
 import DeleteProjectModal from './DeleteProjectModal';
 import UpdateProjectModal from './UpdateProjectModal';;
 import useCurrentUserToken from '../../src/utils/useCurrentUserToken';
-import { H3, P2 } from '../../src/theme/StyledElements'
+import { BodyContainer, H3, P2, P3 } from '../../src/theme/StyledElements'
 
 const ProjectWrapper = styled.div`
-    padding: 10% 3%;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 1em 1em 1em;
 
     @media only screen and (max-width: 767.98px) {
-        grid-template-columns: 1fr;
-        padding: 6em 0;
-        grid-gap: 20px 0;
-        padding-top: 20%;
-        padding-bottom: 10%;
+        width: 100%;
+    }
+
+    .modal-wrapper {
+        width: 100%;
+        margin: 0 auto;
+        button {
+            width: 230px;
+        }
+        text-align: center;
     }
 `;
 
@@ -38,66 +45,72 @@ const Project = (props) => {
     const shortDesc = projectData.description ? projectData.description.substr(0, 160) : "Проєкт будвельно-ремонтної компанії Лізена";
 
     return (
-        <ProjectWrapper>
-            <Head>
-                {/* Primary */}
-                <title>{`Лізена проєкти | ${projectData.project_name}`}</title>
-                <meta name="title" content={`Лізена проєкти | ${projectData.project_name}`}/>
-                <meta name="description" content={shortDesc}/>
+        <BodyContainer>
+            <ProjectWrapper>
+                <Head>
+                    {/* Primary */}
+                    <title>{`Лізена проєкти | ${projectData.project_name}`}</title>
+                    <meta name="title" content={`Лізена роботи | ${projectData.project_name}`}/>
+                    <meta name="description" content={shortDesc}/>
 
-                {/* Open Graph / Facebook */}
-                <meta property="og:type" content="website"/>
-                <meta property="og:url" content={`http://lizena.com.ua/project/${projectData._id}`}/>
-                <meta property="og:title" content={`Лізена проєкти | ${projectData.project_name}`}/>
-                <meta property="og:description" content={shortDesc}/>
-                <meta property="og:image" content={projectData.main_image}/>
-            </Head>
-            {selectedProject &&
-                <>
-                    <div className='project-desc'>
-                        <H3>{project_name}</H3>
-                        <P2>{description}</P2>
-                    </div>
-                    <H3>Галерея</H3>
-                    { currentUserToken && 
-                        <div> 
-                            <AddImageModal 
+                    {/* Open Graph / Facebook */}
+                    <meta property="og:type" content="website"/>
+                    <meta property="og:url" content={`http://lizena.com.ua/project/${projectData._id}`}/>
+                    <meta property="og:title" content={`Лізена роботи | ${projectData.project_name}`}/>
+                    <meta property="og:description" content={shortDesc}/>
+                    <meta property="og:image" content={projectData.main_image}/>
+                </Head>
+                {selectedProject &&
+                    <>
+                        <div className='project-desc'>
+                        <H3>Опис котеджу</H3>
+                            { description && description.split("\n").map((paragraph, index) => {
+                                return (
+                                <P3 key={index}>{paragraph}</P3>
+                                )})
+                            }
+                        </div>
+                        <H3>Галерея</H3>
+                        { currentUserToken && 
+                            <div className='modal-wrapper'> 
+                                <AddImageModal 
+                                    id={projectId}
+                                    handleUpdate={handleUpdateProject}
+                                    handleGet={handleGetProject}
+                                    currentUserToken={currentUserToken}
+                                /> 
+                            </div>
+                        }
+                        <div className='gallery-wrapper'>
+                            <Gallery 
+                                photos={photos} 
                                 id={projectId}
-                                handleUpdate={handleUpdateProject}
+                                currentUserToken={currentUserToken} 
                                 handleGet={handleGetProject}
-                                currentUserToken={currentUserToken}
-                            /> 
-                        </div>
-                    }
-                    <div className=''>
-                        <Gallery 
-                            photos={photos} 
-                            id={projectId}
-                            currentUserToken={currentUserToken} 
-                            handleGet={handleGetProject}
-                            handleEditPhotos={handleEditProjectPhotos}
-                            folder='projects'
-                        />
-                    </div>
-                    {currentUserToken &&
-                        <div>
-                            <UpdateProjectModal
-                                handleUpdateProject={handleUpdateProject}
-                                projectId={projectId}
-                                selectedProject={selectedProject}
-                                handleGetProject={handleGetProject}
-                                currentUserToken={currentUserToken}
-                            />
-                            <DeleteProjectModal 
-                                handleDeleteProject={handleDeleteProject} 
-                                projectId={projectId} 
-                                currentUserToken={currentUserToken}
+                                handleEditPhotos={handleEditProjectPhotos}
+                                folder='projects'
                             />
                         </div>
-                    }
-                </>
-            }
-        </ProjectWrapper>
+                        {currentUserToken &&
+                            <div className='modal-wrapper'>
+                                <UpdateProjectModal
+                                    handleUpdateProject={handleUpdateProject}
+                                    projectId={projectId}
+                                    selectedProject={selectedProject}
+                                    handleGetProject={handleGetProject}
+                                    currentUserToken={currentUserToken}
+                                />
+                                <DeleteProjectModal 
+                                    handleDeleteProject={handleDeleteProject} 
+                                    projectId={projectId} 
+                                    currentUserToken={currentUserToken}
+                                />
+                            </div>
+                        }
+                    </>
+                }
+            </ProjectWrapper>
+        </BodyContainer>  
     )
 }
 

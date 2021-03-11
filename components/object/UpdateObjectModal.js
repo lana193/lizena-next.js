@@ -4,6 +4,7 @@ import { isMobile } from 'react-device-detect';
 import styled from 'styled-components';
 
 import UpdateObjectForm from './UpdateObjectForm';
+import { modalStyles } from '../../src/theme/StyledElements';
 import { SmallButton } from '../elements';
 
 const ButtonWrapper = styled.div`
@@ -11,20 +12,6 @@ const ButtonWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `;
-
-const customStyles = {
-  content : {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: `${isMobile ? '95%' : '60%'}`,
-    height: '600px',
-    overflow: 'scroll'
-  }
-};
 
 const UpdateObjectModal = (props) => {
   const { handleUpdateObject, objectId, selectedObject, handleGetObject, currentUserToken } = props;
@@ -95,7 +82,6 @@ const UpdateObjectModal = (props) => {
     bathrooms: selectedObject.bathrooms,
     price: selectedObject.price,
     conclusion: selectedObject.conclusion
-    // work: '23'
   }
 
   return (
@@ -105,12 +91,11 @@ const UpdateObjectModal = (props) => {
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
+        style={modalStyles}
         ariaHideApp={false}
         contentLabel='Update Object Modal'
       >
         <h2 ref={_subtitle => (subtitle = _subtitle)}>Редагувати об'єкт</h2>
-        {/* <ButtonWrapper> */}
         <UpdateObjectForm 
           onSubmit={handleSubmit} 
           selectedObject={selectedObject} 
@@ -118,8 +103,7 @@ const UpdateObjectModal = (props) => {
           tags={tags}
           setTags={setTags}
         />
-        <SmallButton danger name='Скасувати' width='50%' margin='5px 25% 5px 25%' onClick={closeModal}/>
-        {/* </ButtonWrapper> */}
+        <SmallButton danger name='Скасувати' width='100%' onClick={closeModal}/>
       </Modal>
     </div>
   );

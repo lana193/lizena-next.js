@@ -46,7 +46,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .ReactModal__Body--open {
-    overflow: auto;
+    overflow: hidden;
   }
   
   .swiper-button-next, .swiper-button-prev {
@@ -60,5 +60,11 @@ export const GlobalStyle = createGlobalStyle`
 
   .swiper-pagination-bullet-active {
     background: rgb(60,179,113) !important;
+  }
+  #__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
   }
 `;

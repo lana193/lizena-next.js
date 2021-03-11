@@ -3,15 +3,13 @@ import Modal from 'react-modal';
 
 import AddProjectForm from './AddProjectForm';
 import { SmallButton } from '../elements';
+import { modalStyles } from '../../src/theme/StyledElements';
 import styled from 'styled-components';
 
-import dynamic from 'next/dynamic'
-
-// const SmallButton = dynamic(() => import('../elements').then((mod) => mod.SmallButton))
-
 const ModalWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  // display: flex;
+  // justify-content: center;
+  // width: 100%;
 `;
  
 const customStyles = {
@@ -74,12 +72,12 @@ return (
       isOpen={modalIsOpen}
       onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
-      style={customStyles}
+      style={modalStyles}
       contentLabel='Add Project Modal'
     >
       <h2 ref={_subtitle => (subtitle = _subtitle)}>Додати нову роботу</h2>
         <AddProjectForm onSubmit={handleSubmit}/>
-        <SmallButton danger name='Скасувати' onClick={closeModal}/>
+        <SmallButton danger name='Скасувати' width='100%' onClick={closeModal}/>
       </Modal>
     </ModalWrapper>
   );

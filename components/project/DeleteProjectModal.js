@@ -3,23 +3,13 @@ import Modal from 'react-modal';
 import styled from 'styled-components';
 
 import { SmallButton } from '../elements';
+import { modalStyles } from '../../src/theme/StyledElements';
 
 const ButtonWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 `;
-
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
 
 const DeleteProjectModal = (props) => {
     const { handleDeleteProject, projectId, currentUserToken } = props;
@@ -49,20 +39,20 @@ const DeleteProjectModal = (props) => {
     
     return (
         <div>
-          <SmallButton danger name='Видалити' onClick={openModal}/>
+          <SmallButton danger name='Видалити роботу' width='100%' onClick={openModal}/>
           <Modal
             appElement={document.getElementById('app')}
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
-            style={customStyles}
+            style={modalStyles}
             ariaHideApp={false}
             contentLabel='Delete Project Modal'
           >
             <h2 ref={_subtitle => (subtitle = _subtitle)}>Ви впевнені, що хочете видалити проєкт?</h2>
             <ButtonWrapper>
-              <SmallButton danger width='320px' name='Так' onClick={()=> onModalSubmit(projectId)}/>
-              <SmallButton width='320px' name='Ні' onClick={closeModal} />
+              <SmallButton danger width='48%' name='Так' onClick={()=> onModalSubmit(projectId)}/>
+              <SmallButton width='48%' name='Ні' onClick={closeModal} />
             </ButtonWrapper>
           </Modal>
         </div>

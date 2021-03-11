@@ -1,4 +1,5 @@
 import AdminForm from './AdminForm';
+import { BodyContainer } from '../../src/theme/StyledElements';
 
 const AdminLogIn = (props) => {
   const { handleLogInUser, selectedUser, setCurrentUserToken } = props;
@@ -8,7 +9,9 @@ const AdminLogIn = (props) => {
   }
 
   return (
-    <AdminForm onSubmit={handleSubmit} selectedUser={selectedUser} />
+    <BodyContainer>
+      <AdminForm onSubmit={handleSubmit} selectedUser={selectedUser} />
+    </BodyContainer>
   )
 }
 

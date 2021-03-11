@@ -4,11 +4,12 @@ import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
 import { SmallButton } from '../elements';
+import { modalStyles } from '../../src/theme/StyledElements';
 
 const ButtonWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between; 
 `;
 
 const customStyles = {
@@ -50,19 +51,19 @@ const DeleteObjectModal = (props) => {
     
     return (
       <div>
-        <SmallButton danger name='Видалити' onClick={openModal}/>
+        <SmallButton danger width='100%' name='Видалити' onClick={openModal}/>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
-          style={customStyles}
+          style={modalStyles}
           ariaHideApp={false}
           contentLabel='Delete Object Modal'
         >
           <h2 ref={_subtitle => (subtitle = _subtitle)}>Ви впевнені, що хочете видалити об'єкт?</h2>
           <ButtonWrapper>
-            <SmallButton danger width='320px' name='Так' onClick={()=> onModalSubmit(objectId)}/>
-            <SmallButton width='320px' name='Ні' onClick={closeModal}/>
+            <SmallButton danger name='Так' width='48%' onClick={()=> onModalSubmit(objectId)}/>
+            <SmallButton name='Ні' width='48%' onClick={closeModal}/>
           </ButtonWrapper>
         </Modal>
       </div>

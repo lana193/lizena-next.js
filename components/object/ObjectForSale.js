@@ -8,19 +8,17 @@ import DeleteObjectModal from './DeleteObjectModal';
 import UpdateObjectModal from './UpdateObjectModal';
 import AddImageModal from '../shared/AddImageModal';
 import useCurrentUserToken from '../../src/utils/useCurrentUserToken';
-import { H3, P3 } from '../../src/theme/StyledElements';
+import { BodyContainer, H3, P3 } from '../../src/theme/StyledElements';
 
 const ObjectWrapper = styled.div`
     display: flex;
     align-items: center;
-    padding: 100px 0 150px 0;
     flex-wrap: wrap;
     justify-content: center;
     width: 70%;
     margin: 0 auto;
 
     @media only screen and (max-width: 767.98px) {
-        padding: 60px 0 50px 0;
         width: 100%;
     }
 
@@ -41,7 +39,6 @@ const ObjectWrapper = styled.div`
         }
 
             p, h1 {
-                // font-size: 1.3em;
                 text-transform: uppercase;
                 font-weight: normal;
             }
@@ -183,98 +180,100 @@ const ObjectForSale = (props) => {
     const shortDesc = `Купити ${objectData.subtitle}, площа ${objectData.metres} м.кв, ${objectData.price}$, ${objectData.rooms > 4 ? `${objectData.rooms} кімнат` : `${objectData.rooms} кімнати`}`;
 
     return (
-        <ObjectWrapper background={main_image && main_image}>
-            <Head>
-                {/* Primary */}
-                <title>{`Купити котедж | ${objectData.object_name}`}</title>
-                <meta name="title" content={`Купити котедж | ${objectData.object_name}`}/>
-                <meta name="description" content={shortDesc}/>
+        <BodyContainer>
+            <ObjectWrapper background={main_image && main_image}>
+                <Head>
+                    {/* Primary */}
+                    <title>{`Купити котедж | ${objectData.object_name}`}</title>
+                    <meta name="title" content={`Купити котедж | ${objectData.object_name}`}/>
+                    <meta name="description" content={shortDesc}/>
 
-                {/* Open Graph / Facebook */}
-                <meta property="og:type" content="website"/>
-                <meta property="og:url" content={`http://lizena.com.ua/object/${objectData._id}`}/>
-                <meta property="og:title" content={`Купити котедж | ${objectData.object_name}`}/>
-                <meta property="og:description" content={shortDesc}/>
-                <meta property="og:image" content={objectData.main_image}/>
-            </Head>
-            {objectData &&
-                <>
-                    <div className='object-main-info'>
-                        <div className='object-title'>
-                            <h1 className='h1-title'>{object_name} </h1><p className='p-title'> • {metres} м<sup>2</sup></p>
+                    {/* Open Graph / Facebook */}
+                    <meta property="og:type" content="website"/>
+                    <meta property="og:url" content={`http://lizena.com.ua/object/${objectData._id}`}/>
+                    <meta property="og:title" content={`Купити котедж | ${objectData.object_name}`}/>
+                    <meta property="og:description" content={shortDesc}/>
+                    <meta property="og:image" content={objectData.main_image}/>
+                </Head>
+                {objectData &&
+                    <>
+                        <div className='object-main-info'>
+                            <div className='object-title'>
+                                <h1 className='h1-title'>{object_name} </h1><p className='p-title'> • {metres} м<sup>2</sup></p>
+                            </div>
+                            <div className='object-price'>
+                                <p className='p-price'> {price} $</p>
+                            </div>
                         </div>
-                        <div className='object-price'>
-                            <p className='p-price'> {price} $</p>
-                        </div>
-                    </div>
-                    <div className='object-desc'>
-                        <H3>Опис котеджу</H3>
-                        { description && description.split("\n").map((paragraph, index) => {
-                            return (
-                            <P3 key={index}>{paragraph}</P3>
-                            )})
-                        }
-                        {works && <P3>У будинку:</P3>}
-                        { works &&
-                            <ul>
-                                {works.map((work, index) => {
-                                    return (
-                                        <li key={index}>{work}</li>
-                                    )
-                                })}
-                            </ul>
-                        }
+                        <div className='object-desc'>
+                            <H3>Опис котеджу</H3>
+                            { description && description.split("\n").map((paragraph, index) => {
+                                return (
+                                <P3 key={index}>{paragraph}</P3>
+                                )})
+                            }
+                            {works && <P3>У будинку:</P3>}
+                            { works &&
+                                <ul>
+                                    {works.map((work, index) => {
+                                        return (
+                                            <li key={index}>{work}</li>
+                                        )
+                                    })}
+                                </ul>
+                            }
+                                
+                        { conclusion && conclusion.split("\n").map((paragraph, index) => {
+                                return (
+                                <P3 key={index}>{paragraph}</P3>
+                                )})
+                            }
                             
-                    { conclusion && conclusion.split("\n").map((paragraph, index) => {
-                            return (
-                            <P3 key={index}>{paragraph}</P3>
-                            )})
-                        }
-                        
-                    </div>
-                    <div className='gallery-wrapper'>
-                        <H3>Галерея</H3> 
-                        { currentUserToken && 
-                            <div> 
-                                <AddImageModal 
+                        </div>
+                        <div className='gallery-wrapper'>
+                            <H3>Галерея</H3> 
+                            { currentUserToken && 
+                                <div> 
+                                    <AddImageModal 
+                                        id={objectId}
+                                        handleUpdate={handleUpdateObject}
+                                        handleGet={handleGetObject}
+                                        currentUserToken={currentUserToken}
+                                    /> 
+                                </div>
+                            }
+                            <div className='gallery'>
+                                <Gallery 
+                                    photos={photos} 
                                     id={objectId}
-                                    handleUpdate={handleUpdateObject}
+                                    currentUserToken={currentUserToken} 
                                     handleGet={handleGetObject}
+                                    handleEditPhotos={handleEditObjectPhotos}
+                                    folder='objects'
+                                />
+                            </div>
+                        </div>
+
+                        {currentUserToken &&
+                            <div>
+                                <UpdateObjectModal
+                                    handleUpdateObject={handleUpdateObject}
+                                    objectId={objectId}
+                                    selectedObject={selectedObject}
+                                    handleGetObject={handleGetObject}
                                     currentUserToken={currentUserToken}
-                                /> 
+                                />
+                                <DeleteObjectModal
+                                    handleDeleteObject={handleDeleteObject}
+                                    objectId={objectId}
+                                    currentUserToken={currentUserToken}
+                                />
                             </div>
                         }
-                        <div className='gallery'>
-                            <Gallery 
-                                photos={photos} 
-                                id={objectId}
-                                currentUserToken={currentUserToken} 
-                                handleGet={handleGetObject}
-                                handleEditPhotos={handleEditObjectPhotos}
-                                folder='objects'
-                            />
-                        </div>
-                    </div>
-
-                    {currentUserToken &&
-                        <div>
-                            <UpdateObjectModal
-                                handleUpdateObject={handleUpdateObject}
-                                objectId={objectId}
-                                selectedObject={selectedObject}
-                                handleGetObject={handleGetObject}
-                                currentUserToken={currentUserToken}
-                            />
-                            <DeleteObjectModal
-                                handleDeleteObject={handleDeleteObject}
-                                objectId={objectId}
-                                currentUserToken={currentUserToken}
-                            />
-                        </div>
-                    }
-                </>
-            }
-        </ObjectWrapper>
+                    </>
+                }
+            </ObjectWrapper>
+        </BodyContainer>
     )
 }
 

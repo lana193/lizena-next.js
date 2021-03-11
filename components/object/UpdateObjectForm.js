@@ -142,7 +142,7 @@ const UpdateObjectForm = (props) => {
                     />
                 </div>
                 <div className='button-wrapper'>
-                    <SmallButton name='Зберегти зміни' width='50%' margin='5px 25% 5px 25%' type='submit' />
+                    <SmallButton name='Зберегти зміни' width='100%' type='submit' />
                 </div>
             </Form>
         </div>

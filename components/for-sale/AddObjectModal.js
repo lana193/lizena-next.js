@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
+import { isMobile } from 'react-device-detect';
 
 import styled from 'styled-components';
 
@@ -10,8 +11,6 @@ import { SmallButton } from '../elements';
 const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding: 0;
-  margin-top: 1em;
 `;
  
 const customStyles = {
@@ -22,7 +21,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    width: '400px',
+    width: `${isMobile ? '95%' : '60%'}`,
     height: '600px',
     overflow: 'scroll'
   }
@@ -87,7 +86,7 @@ return (
       >
         <h2 ref={_subtitle => (subtitle = _subtitle)}>Додати новий об'єкт</h2>
         <AddObjectForm onSubmit={handleSubmit}/>
-        <SmallButton danger name='Скасувати' onClick={closeModal}/>
+        <SmallButton danger name='Скасувати' width='100%' onClick={closeModal}/>
       </Modal>
     </ModalWrapper>
   );

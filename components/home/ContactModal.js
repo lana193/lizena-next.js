@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { isMobile } from 'react-device-detect';
 
 import ContactForm from '../contact-us/ContactForm';
 import { SmallButton, BigButton} from '../elements';
@@ -10,8 +11,11 @@ const customStyles = {
     left: '50%',
     right: 'auto',
     bottom: 'auto',
+    maxWidth: '95%',
+    maxHeight: '80vh',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    overflow: `${isMobile &&  'scroll'}`,
     zIndex: 2
   }
 };
@@ -44,7 +48,7 @@ const ContactModal = (props) => {
 
   return (
     <div>
-      <BigButton name='Замовити безкоштовну консультацію' onClick={openModal}/>
+      <BigButton name='Замовити безкоштовну консультацію' margin={'40px 0 0 0'} onClick={openModal}/>
       <Modal
         // appElement={document.getElementById('app')}
         isOpen={modalIsOpen}
@@ -56,7 +60,7 @@ const ContactModal = (props) => {
       >
         <h2 ref={_subtitle => (subtitle = _subtitle)}>Замовити консультацію</h2>
         <ContactForm onSubmit={handleSubmit} closeContactModal={closeModal}/>
-        <SmallButton danger name='Скасувати' onClick={closeModal} />
+        <SmallButton danger name='Скасувати' width='100%' onClick={closeModal} />
       </Modal>
     </div>
   );
