@@ -12,7 +12,7 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     maxWidth: '95%',
-    maxHeight: '80vh',
+    maxHeight: '70vh',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     overflow: `${isMobile &&  'scroll'}`,

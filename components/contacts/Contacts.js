@@ -61,7 +61,8 @@ const ContactsContainer = styled.div`
 
         .social-wrapper {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
             width: 100%;
             text-align: center;
@@ -142,7 +143,6 @@ const Contacts = (props) => {
                             <P1 className='contact-info'>м. Львів, вул. Богданівська, 11а</P1>
                         </div>
                         <div className='social-wrapper'>
-                            
                             <hr className='contacts-hr'/>
                             <H5>Знайдіть нас у соціальних мережах!</H5>
                             <div className='social'>
