@@ -29,9 +29,6 @@ const HomePageWrapper = styled.div`
     background-attachment: fixed;
 
     @media only screen and (max-width: 767.98px) {
-      // background-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 100%), url(/background-mobile2.jpg);
-      // background-size: 100%;
-      // background-position: top;
       height: 434px;
       padding: 5px;
     }

@@ -1,4 +1,3 @@
-import '../styles/globals.css'
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 

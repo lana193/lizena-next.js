@@ -81,7 +81,6 @@ const NavBarContainer = styled.nav`
 
         .mobile-nav-link:active {
             color: rgb(0, 197, 105, 0.8);
-            // color: ${props => props.theme.colors.mediumseagreen };
         }
     }
 
@@ -111,7 +110,8 @@ const NavBar = () => {
                     </div>
                 
                     { showMobileMenu && 
-                        <div className='mobile-menu'>
+                        <div className='mobile-menu' onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                            <Link href='/'><a className ='mobile-nav-link'>Головна</a></Link>
                             <Link href='/for-sale'><a className ='mobile-nav-link'>Об'єкти під продаж</a></Link>
                             <Link href='/projects'><a className ='mobile-nav-link'>Наші роботи</a></Link>
                             <Link href='/services'><a className ='mobile-nav-link'>Послуги та розцінки</a></Link>
@@ -121,6 +121,7 @@ const NavBar = () => {
                 </div>
                 : 
                 <div className ='nav-right'>
+                    <Link href='/'><a className ='nav-link'>Головна</a></Link>
                     <Link href='/for-sale'><a className ='nav-link'>Об'єкти під продаж</a></Link>
                     <Link href='/projects'><a className ='nav-link'>Наші роботи</a></Link>
                     <Link href='/services'><a className ='nav-link'>Послуги та розцінки</a></Link>

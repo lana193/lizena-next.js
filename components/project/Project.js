@@ -8,7 +8,7 @@ import AddImageModal from '../shared/AddImageModal';
 import DeleteProjectModal from './DeleteProjectModal';
 import UpdateProjectModal from './UpdateProjectModal';;
 import useCurrentUserToken from '../../src/utils/useCurrentUserToken';
-import { BodyContainer, H3, P2, P3 } from '../../src/theme/StyledElements'
+import { BodyContainer, H3, P3 } from '../../src/theme/StyledElements'
 
 const ProjectWrapper = styled.div`
     width: 80%;
@@ -31,7 +31,7 @@ const ProjectWrapper = styled.div`
 
 const Project = (props) => {
     const { handleGetProject, selectedProject, handleDeleteProject, handleUpdateProject, handleEditProjectPhotos, projectData } = props;
-    const { project_name, description, photos } = selectedProject;
+    const { description, photos } = selectedProject;
     
     const router = useRouter();
     const projectId = router.query.project_id;
