@@ -88,8 +88,8 @@ const Footer = () => {
                 </div>
                 <div className='footer-contact'>
                     <PhoneIcon />
-                    <p className='footer-p'>+38 (067) 90 44 630,</p>
-                    <p className='footer-p'>+38 (097) 66 08 663</p>
+                    <p className='footer-p'><a href="tel://+380679044630">+38 (067) 90 44 630,</a></p>
+                    <p className='footer-p'><a href="tel://+380976608663">+38 (097) 66 08 663</a></p>
                 </div>
                 <div className='footer-contact'>
                     <LocationIcon />

@@ -95,8 +95,8 @@ const NavBar = () => {
                     <HomeIcon />
                 </Link>         
                 <div className='phone_wrapper'>
-                    +38 (067) 90 44 630, <br/>
-                    +38 (097) 66 08 663
+                    <a href="tel://+380679044630">+38 (067) 90 44 630,</a> <br/>
+                    <a href="tel://+380976608663">+38 (097) 66 08 663</a>
                 </div>
             </div>
             { isMobile ? 
