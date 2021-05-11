@@ -159,9 +159,8 @@ const Home = (props) => {
         <About />
         <WhyUs />
         <ByApartmentContainer>
-            <H2>Бажаєте замовити консультацію?</H2>
+            <H2>Бажаєте отримати безкоштовну консультацію?</H2>
             <P1 className='big-letter-p'>Компанія Лізена займається будівництвом котеджів та квартир у Львові та околицях під продаж.</P1>
-            {/* <P1 className='big-letter-p'>Ми з радістю допоможемо Вам з будівництвом те ремонтом.</P1> */}
             <ContactModal handleSendMessage={handleSendMessage} square={true} openButtonName='Замовити консультацію'/>
         </ByApartmentContainer>
       </HomePageWrapper>
