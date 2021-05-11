@@ -14,9 +14,10 @@ const ButtonContainer = styled.div`
     button {
         background-color: ${({theme}) => theme.colors.mediumseagreen};
         border: none;
+        border-radius: 0.5rem;
         color: white;
         padding: 15px 32px;
-        margin: 0;
+        margin: 0 auto;
         
         text-decoration: none;
         display: inline-block;
@@ -30,7 +31,7 @@ const ButtonContainer = styled.div`
         }
 
         @media screen and (max-width: 600px) {
-            border-radius: ${props => props.square ? '0' : '45%'};
+            border-radius: ${props => props.square ? '0.5rem' : '45%'};
             text-align: center;
             padding:  ${props => !props.square && '25px 5px'};
             line-height: 1.5em;

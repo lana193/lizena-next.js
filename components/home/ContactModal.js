@@ -41,16 +41,13 @@ const ContactModal = (props) => {
   }
 
   const handleSubmit = (values) => {
-    // handleSendMessage(values).then(()=> closeModal());
     handleSendMessage(values);
-    // closeModal();
   }
 
   return (
     <div>
-      <BigButton name='Замовити безкоштовну консультацію' margin={'40px 0 0 0'} onClick={openModal}/>
+      <BigButton name={props.openButtonName} square={props.square} onClick={openModal}/>
       <Modal
-        // appElement={document.getElementById('app')}
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}

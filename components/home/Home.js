@@ -6,8 +6,7 @@ import { KeyIcon, RightArrow } from '../../src/icons/Icons';
 import About from './About';
 import WhyUs from './WhyUs';
 import ContactModal from './ContactModal';
-import ByApartment from './ByApartment';
-import { BodyContainer } from '../../src/theme/StyledElements';
+import { BodyContainer, H2, P1 } from '../../src/theme/StyledElements';
 
 const HomePageWrapper = styled.div`
   margin: 0;
@@ -31,6 +30,14 @@ const HomePageWrapper = styled.div`
     @media only screen and (max-width: 767.98px) {
       height: 434px;
       padding: 5px;
+    }
+
+    .header {
+      width: 100%;
+      margin-top: 10%;
+      @media only screen and (max-width: 767.98px) {
+        margin-top: 5%;
+      }
     }
 
     .buy-appartment {
@@ -90,7 +97,21 @@ const HomePageWrapper = styled.div`
 `;
 
 
+const ByApartmentContainer = styled.div`
+    margin: 0 auto;
+    padding: 1em;
+    text-align: center;
+
+    .big-letter-p {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+`;
+
+
 const H1 = styled.h1`
+    margin: 0 auto;
+    text-align: center;
     color: rgb(240,255,240);
     padding: 0.5em 0;
     font-size: 2em;
@@ -124,7 +145,7 @@ const Home = (props) => {
         <div className='background-container'>
           <div className='header'>
             <H1>Будівельно-ремонтна компанія ЛІЗЕНА</H1>
-            <ContactModal handleSendMessage={handleSendMessage} />
+            <ContactModal handleSendMessage={handleSendMessage} openButtonName='Замовити безкоштовну консультацію' />
           </div>
           <div className='buy-appartment'>
             <Link href='/for-sale'>
@@ -137,62 +158,15 @@ const Home = (props) => {
         </div>
         <About />
         <WhyUs />
-        <ByApartment />
+        <ByApartmentContainer>
+            <H2>Бажаєте замовити консультацію?</H2>
+            <P1 className='big-letter-p'>Компанія Лізена займається будівництвом котеджів та квартир у Львові та околицях під продаж.</P1>
+            {/* <P1 className='big-letter-p'>Ми з радістю допоможемо Вам з будівництвом те ремонтом.</P1> */}
+            <ContactModal handleSendMessage={handleSendMessage} square={true} openButtonName='Замовити консультацію'/>
+        </ByApartmentContainer>
       </HomePageWrapper>
       </BodyContainer>
   );
 }
 
 export default Home;
-
-/* <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer> */
